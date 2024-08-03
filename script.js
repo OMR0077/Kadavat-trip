@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded", function() {
         icon.classList.add('icon');
 
         const span = document.createElement('span');
-        span.innerHTML = `<a href="https://pay.google.com/gp/p/ui/pay?pa=tintopinhero-1@okhdfcbank&pn=${participants[participantIndex].name}&am=${amount}&cu=INR">$${amount}</a>`;
+        span.innerHTML = `<a href="upi://pay?pa=tintopinhero-1@okhdfcbank&pn=${participants[participantIndex].name}&am=${amount}&cu=INR">$${amount}</a>`;
 
         checkboxContainer.appendChild(checkbox);
         checkboxContainer.appendChild(icon);
