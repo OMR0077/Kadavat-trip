@@ -79,12 +79,12 @@ document.addEventListener("DOMContentLoaded", function() {
         checkbox.dataset.type = type;
         checkbox.dataset.index = participantIndex;
         checkbox.addEventListener('change', updateGivenAmount);
-        
+
         const icon = document.createElement('div');
         icon.classList.add('icon');
 
         const span = document.createElement('span');
-        span.textContent = `$${amount}`;
+        span.innerHTML = `<a href="https://pay.google.com/gp/p/ui/pay?pa=tintopinhero-1@okhdfcbank&pn=${participants[participantIndex].name}&am=${amount}&cu=INR">$${amount}</a>`;
 
         checkboxContainer.appendChild(checkbox);
         checkboxContainer.appendChild(icon);
