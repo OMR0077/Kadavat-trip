@@ -1,18 +1,18 @@
 document.addEventListener("DOMContentLoaded", function() {
     const participants = [
-        { name: 'John Doe', accommodation: 30, food: 20, transportation: 20, activities: 25, alcohol: 25 },
-        { name: 'Jane Smith', accommodation: 40, food: 30, transportation: 20, activities: 35, alcohol: 25 },
-        { name: 'Alice Johnson', accommodation: 50, food: 25, transportation: 30, activities: 40, alcohol: 35 },
-        { name: 'Bob Brown', accommodation: 30, food: 20, transportation: 15, activities: 20, alcohol: 15 },
-        { name: 'Charlie Black', accommodation: 35, food: 25, transportation: 20, activities: 25, alcohol: 20 },
-        { name: 'Daisy White', accommodation: 40, food: 30, transportation: 20, activities: 30, alcohol: 20 },
-        { name: 'Ella Green', accommodation: 45, food: 25, transportation: 25, activities: 35, alcohol: 20 },
-        { name: 'Frank Blue', accommodation: 50, food: 30, transportation: 20, activities: 40, alcohol: 20 },
-        { name: 'Grace Yellow', accommodation: 35, food: 20, transportation: 15, activities: 25, alcohol: 15 },
-        { name: 'Hank Orange', accommodation: 50, food: 40, transportation: 30, activities: 35, alcohol: 35 },
-        { name: 'Ivy Pink', accommodation: 30, food: 20, transportation: 20, activities: 25, alcohol: 20 },
-        { name: 'Jack Purple', accommodation: 40, food: 25, transportation: 25, activities: 30, alcohol: 20 },
-        { name: 'Kate Red', accommodation: 45, food: 30, transportation: 20, activities: 35, alcohol: 25 }
+        { name: 'Tinto', accommodation: 0, food: 0, transportation: 20, activities: 0, alcohol: 400 },
+        { name: 'Ginto', accommodation: 0, food: 0, transportation: 20, activities: 0, alcohol: 400 },
+        { name: 'Aby', accommodation: 0, food: 0, transportation: 30, activities: 0, alcohol: 400 },
+        { name: 'Raijo', accommodation: 0, food: 0, transportation: 15, activities: 0, alcohol: 400 },
+        { name: 'Vimal', accommodation: 0, food: 0, transportation: 20, activities: 0, alcohol: 400 },
+        { name: 'Melvin', accommodation: 0, food: 0, transportation: 20, activities: 0, alcohol: 400 },
+        { name: 'Jugal', accommodation: 0, food: 0, transportation: 25, activities: 0, alcohol: 400 },
+        { name: 'Jesto', accommodation: 0, food: 0, transportation: 20, activities: 0, alcohol: 400 },
+        { name: 'Tom', accommodation: 0, food: 0, transportation: 15, activities: 0, alcohol: 400 },
+        { name: 'Alet', accommodation: 0, food: 0, transportation: 30, activities: 0, alcohol: 400 },
+        { name: 'Ebin', accommodation: 0, food: 0, transportation: 20, activities: 0, alcohol: 400 },
+        { name: 'Jefin', accommodation: 0, food: 0, transportation: 25, activities: 0, alcohol: 400 },
+        { name: 'Jerin', accommodation: 0, food: 0, transportation: 20, activities: 0, alcohol: 400 }
     ];
 
     const tableBody = document.getElementById('participants-table');
