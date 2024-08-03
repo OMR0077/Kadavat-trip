@@ -22,15 +22,17 @@ document.addEventListener("DOMContentLoaded", function() {
         const row = document.createElement('tr');
 
         const nameCell = document.createElement('td');
-        const accommodationCell = createCheckboxCell(participant.accommodation);
-        const foodCell = createCheckboxCell(participant.food);
-        const transportationCell = createCheckboxCell(participant.transportation);
-        const activitiesCell = createCheckboxCell(participant.activities);
-        const alcoholCell = createCheckboxCell(participant.alcohol);
+        const accommodationCell = createCheckboxCell(participant.accommodation, 'accommodation');
+        const foodCell = createCheckboxCell(participant.food, 'food');
+        const transportationCell = createCheckboxCell(participant.transportation, 'transportation');
+        const activitiesCell = createCheckboxCell(participant.activities, 'activities');
+        const alcoholCell = createCheckboxCell(participant.alcohol, 'alcohol');
         const totalBudgetCell = document.createElement('td');
+        const givenCell = document.createElement('td');
         
         nameCell.textContent = participant.name;
         totalBudgetCell.textContent = calculateTotalBudget(participant);
+        givenCell.textContent = '$0'; // Initialize the "Given" cell with $0
 
         row.appendChild(nameCell);
         row.appendChild(accommodationCell);
@@ -39,6 +41,7 @@ document.addEventListener("DOMContentLoaded", function() {
         row.appendChild(activitiesCell);
         row.appendChild(alcoholCell);
         row.appendChild(totalBudgetCell);
+        row.appendChild(givenCell);
 
         tableBody.appendChild(row);
 
@@ -62,15 +65,17 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
-    function createCheckboxCell(amount) {
+    function createCheckboxCell(amount, type) {
         const cell = document.createElement('td');
         const checkboxContainer = document.createElement('div');
         checkboxContainer.classList.add('checkbox-container');
 
         const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
-        checkbox.checked = amount > 0;
-        checkbox.addEventListener('change', updateTotalBudget);
+        checkbox.checked = false;  // Unchecked by default
+        checkbox.dataset.amount = amount;
+        checkbox.dataset.type = type;
+        checkbox.addEventListener('change', updateGivenAmount);
         
         const span = document.createElement('span');
         span.textContent = `$${amount}`;
@@ -83,42 +88,25 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function calculateTotalBudget(participant) {
-        return (
-            (participant.accommodation > 0 ? participant.accommodation : 0) +
-            (participant.food > 0 ? participant.food : 0) +
-            (participant.transportation > 0 ? participant.transportation : 0) +
-            (participant.activities > 0 ? participant.activities : 0) +
-            (participant.alcohol > 0 ? participant.alcohol : 0)
-        );
+        const amountFields = ['accommodation', 'food', 'transportation', 'activities', 'alcohol'];
+        return amountFields.reduce((total, field) => {
+            return total + (participant[field] > 0 ? participant[field] : 0);
+        }, 0);
     }
 
-    function updateTotalBudget(event) {
+    function updateGivenAmount(event) {
         const row = event.target.closest('tr');
         const cells = row.querySelectorAll('td');
+        const checkbox = event.target;
         
-        const participant = {
-            accommodation: cells[1].querySelector('span').textContent.slice(1),
-            food: cells[2].querySelector('span').textContent.slice(1),
-            transportation: cells[3].querySelector('span').textContent.slice(1),
-            activities: cells[4].querySelector('span').textContent.slice(1),
-            alcohol: cells[5].querySelector('span').textContent.slice(1)
-        };
+        const amount = parseInt(checkbox.dataset.amount);
+        const givenCell = cells[7]; // Given cell is at index 7
 
-        const checkboxStates = [
-            cells[1].querySelector('input').checked,
-            cells[2].querySelector('input').checked,
-            cells[3].querySelector('input').checked,
-            cells[4].querySelector('input').checked,
-            cells[5].querySelector('input').checked
-        ];
-
-        let totalBudget = 0;
-        if (checkboxStates[0]) totalBudget += parseInt(participant.accommodation);
-        if (checkboxStates[1]) totalBudget += parseInt(participant.food);
-        if (checkboxStates[2]) totalBudget += parseInt(participant.transportation);
-        if (checkboxStates[3]) totalBudget += parseInt(participant.activities);
-        if (checkboxStates[4]) totalBudget += parseInt(participant.alcohol);
-
-        cells[6].textContent = totalBudget;
+        let currentGivenAmount = parseInt(givenCell.textContent.replace('$', '')) || 0;
+        if (checkbox.checked) {
+            givenCell.textContent = `$${currentGivenAmount + amount}`;
+        } else {
+            givenCell.textContent = `$${Math.max(0, currentGivenAmount - amount)}`;
+        }
     }
 });
