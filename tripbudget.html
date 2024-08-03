@@ -18,10 +18,19 @@
         </section>
         <section class="table-section">
             <h2>Participants Contributions</h2>
-            <label for="participant-filter">Filter by Name:</label>
-            <select id="participant-filter">
-                <option value="all">All</option>
-            </select>
+            <div class="filter-container">
+                <div>
+                    <label for="participant-filter">Filter by Name:</label>
+                    <select id="participant-filter">
+                        <option value="all">All</option>
+                        <!-- Options will be added here by JavaScript -->
+                    </select>
+                </div>
+                <div class="note">
+                    <span class="icon"><i class="fa-solid fa-check"></i></span> Given money
+                    <span class="icon"><i class="fa-solid fa-xmark"></i></span> Not given money
+                </div>
+            </div>
             <table>
                 <thead>
                     <tr>

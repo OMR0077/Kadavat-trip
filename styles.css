@@ -111,3 +111,158 @@ tbody tr:nth-child(even) {
 .checkbox-container span {
     font-size: 14px; /* Adjust text size as needed */
 }
+
+.table-container {
+    overflow-x: auto; /* Allow horizontal scroll if needed */
+    padding: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+/* Checkbox container styles */
+.checkbox-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100px; /* Default width */
+}
+
+.checkbox-container input[type="checkbox"] {
+    position: absolute;
+    opacity: 0; /* Hide default checkbox */
+    width: 20px; /* Default checkbox width */
+    height: 20px; /* Default checkbox height */
+    cursor: pointer; /* Show pointer cursor */
+}
+
+.checkbox-container .icon {
+    font-size: 18px; /* Default icon size */
+    color: #007bff; /* Icon color */
+    margin-right: 8px; /* Space between icon and text */
+}
+
+.checkbox-container span {
+    font-size: 14px; /* Default text size */
+}
+
+/* Media Queries for responsiveness */
+@media (max-width: 1200px) {
+    .checkbox-container {
+        width: 80px; /* Adjust width for medium screens */
+    }
+
+    .checkbox-container .icon {
+        font-size: 16px; /* Adjust icon size for medium screens */
+    }
+
+    .checkbox-container span {
+        font-size: 12px; /* Adjust text size for medium screens */
+    }
+}
+
+@media (max-width: 992px) {
+    table {
+        font-size: 12px; /* Adjust font size for smaller screens */
+    }
+
+    th, td {
+        padding: 6px; /* Reduce padding for smaller screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .checkbox-container {
+        width: 60px; /* Adjust width for small screens */
+    }
+
+    .checkbox-container .icon {
+        font-size: 14px; /* Adjust icon size for small screens */
+    }
+
+    .checkbox-container span {
+        font-size: 10px; /* Adjust text size for small screens */
+    }
+
+    table {
+        font-size: 10px; /* Further reduce font size */
+    }
+
+    th, td {
+        padding: 4px; /* Further reduce padding */
+    }
+
+.note {
+    display: flex !important;
+    align-items: center !important;
+    font-size: 14px !important;
+    margin-left: 181px !important;
+    margin-top: 59px !important;
+    letter-spacing: 1px !important;
+}
+}
+
+@media (max-width: 576px) {
+    .table-container {
+        padding: 10px; /* Reduce padding for very small screens */
+    }
+
+    .checkbox-container {
+        width: 50px; /* Further adjust width */
+    }
+
+    .checkbox-container .icon {
+        font-size: 12px; /* Further adjust icon size */
+    }
+
+    .checkbox-container span {
+        font-size: 8px; /* Further adjust text size */
+    }
+
+    table {
+        font-size: 8px; /* Minimum font size */
+    }
+
+    th, td {
+        padding: 2px; /* Minimum padding */
+    }
+    .note {
+        display: flex !important;
+        align-items: center !important;
+        font-size: 14px !important;
+        margin-left: 29px !important;
+        margin-top: 59px !important;
+        letter-spacing: 1px !important;
+    }
+}
+/* Note styling */
+.filter-container {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+    gap: 20px; /* Space between filter and note */
+}
+
+.note {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    margin-left: 490px;
+    margin-top: 59px;
+    letter-spacing: 1px;
+}
+
+.note .icon {
+    font-size: 16px; /* Icon size for note text */
+    margin-right: 5px; /* Space between icon and text */
+    color: #007bff; /* Icon color */
+}
+
