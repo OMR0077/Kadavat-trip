@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trip Budget Distribution</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Trip Budget Planner</h1>
+    </header>
+    <main>
+        <section class="banner">
+            <h2>Plan Your Dream Trip!</h2>
+            <p>Distribute your trip budget among participants easily.</p>
+        </section>
+        <section class="table-section">
+            <h2>Participants Contributions</h2>
+            <label for="participant-filter">Filter by Name:</label>
+            <select id="participant-filter">
+                <option value="all">All</option>
+            </select>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Accommodation ($)</th>
+                        <th>Food ($)</th>
+                        <th>Transportation ($)</th>
+                        <th>Activities ($)</th>
+                        <th>Alcohol ($)</th>
+                        <th>Total Budget ($)</th>
+                    </tr>
+                </thead>
+                <tbody id="participants-table">
+                    <!-- JavaScript will populate this table -->
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
