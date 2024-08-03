@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function() {
         { name: 'Ginto', accommodation: 0, food: 0, transportation: 332, activities: 0, alcohol: 400 },
         { name: 'Aby', accommodation: 0, food: 0, transportation: 332, activities: 0, alcohol: 400 },
         { name: 'Raijo', accommodation: 0, food: 0, transportation: 275, activities: 0, alcohol: 400 },
-        { name: 'Vimal', accommodation: 0, food: 0, transportation: 275, activities: 0, alcohol: 400 },
+        { name: 'Vimal', accommodation: 0, food: 0, transportation: 117, activities: 0, alcohol: 400 },
         { name: 'Melvin', accommodation: 0, food: 0, transportation: 275, activities: 0, alcohol: 400 },
         { name: 'Jugal', accommodation: 0, food: 0, transportation: 275, activities: 0, alcohol: 400 },
         { name: 'Jesto', accommodation: 0, food: 0, transportation: 275, activities: 0, alcohol: 400 },
