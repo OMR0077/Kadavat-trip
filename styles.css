@@ -75,59 +75,39 @@ tbody tr:nth-child(even) {
     background-color: #f9f9f9;
 }
 
-/* Responsive styles */
-@media (max-width: 768px) {
-    header, .banner, .table-section {
-        padding: 1rem;
-    }
-
-    .banner {
-        padding: 1.5rem;
-        font-size: 1rem;
-    }
-
-    th, td {
-        padding: 0.5rem;
-    }
-
-    select {
-        width: 100%;
-    }
-
-    table {
-        font-size: 0.9rem;
-    }
-}
-
-@media (max-width: 480px) {
-    header, .banner, .table-section {
-        padding: 0.5rem;
-    }
-
-    .banner {
-        padding: 1rem;
-        font-size: 0.9rem;
-    }
-
-    th, td {
-        padding: 0.4rem;
-    }
-
-    select {
-        width: 100%;
-    }
-
-    table {
-        font-size: 0.8rem;
-    }
-}
-
 .checkbox-container {
+    position: relative;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    width: 120px; /* Adjust width as needed */
 }
 
-.checkbox-container input {
-    transform: scale(1.2);
+.checkbox-container input[type="checkbox"] {
+    position: absolute;
+    opacity: 0; /* Hide default checkbox */
+    width: 20px; /* Ensure checkbox has a width */
+    height: 20px; /* Ensure checkbox has a height */
+    cursor: pointer; /* Show pointer cursor */
+}
+
+.checkbox-container .icon {
+    font-size: 18px;
+    color: #007bff; /* Icon color */
+    margin-right: 8px; /* Space between icon and text */
+}
+
+.checkbox-container input[type="checkbox"]:checked + .icon::before {
+    content: "\f00c"; /* Font Awesome checkmark icon */
+    font-family: 'Font Awesome 6 Free'; /* Specify Font Awesome font */
+    font-weight: 900; /* Use the correct font weight for solid icons */
+}
+
+.checkbox-container input[type="checkbox"]:not(:checked) + .icon::before {
+    content: "\f00d"; /* Font Awesome cross icon */
+    font-family: 'Font Awesome 6 Free'; /* Specify Font Awesome font */
+    font-weight: 900; /* Use the correct font weight for solid icons */
+}
+
+.checkbox-container span {
+    font-size: 14px; /* Adjust text size as needed */
 }

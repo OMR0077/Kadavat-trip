@@ -77,10 +77,14 @@ document.addEventListener("DOMContentLoaded", function() {
         checkbox.dataset.type = type;
         checkbox.addEventListener('change', updateGivenAmount);
         
+        const icon = document.createElement('div');
+        icon.classList.add('icon');
+
         const span = document.createElement('span');
         span.textContent = `$${amount}`;
 
         checkboxContainer.appendChild(checkbox);
+        checkboxContainer.appendChild(icon);
         checkboxContainer.appendChild(span);
         cell.appendChild(checkboxContainer);
 
