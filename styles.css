@@ -121,3 +121,13 @@ tbody tr:nth-child(even) {
         font-size: 0.8rem;
     }
 }
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.checkbox-container input {
+    transform: scale(1.2);
+}
