@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function() {
         { name: 'Jesto', accommodation: 580, food: 350, transportation: 350, alcohol: 400, percentageChange: 0 },
         { name: 'Tom', accommodation: 580, food: 350, transportation: 350, alcohol: 400, percentageChange: 0 },
         { name: 'Alet', accommodation: 580, food: 350, transportation: 350, alcohol: 0, percentageChange: 0 },
-        { name: 'Ebin', accommodation: 580, food: 350, transportation: 350, alcohol: 400, percentageChange: 0 },
+        { name: 'Ebin', accommodation: 580, food: 350, transportation: 350, alcohol: 0, percentageChange: 0 },
         { name: 'Jefin', accommodation: 580, food: 350, transportation: 350, alcohol: 400, percentageChange: 0 },
         { name: 'Melvin', accommodation: 580, food: 350, transportation: 350, alcohol: 400, percentageChange: 0 }
     ];
