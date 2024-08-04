@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function() {
         payNowButton.textContent = "Pay Now";
         payNowButton.addEventListener('click', () => {
             const amount = calculateTotalBudget(participant).toFixed(2);
-            const upiLink = `upi://pay?pa=raijopinhero007@okhdfcbank&pn=${participant.name}&am=${amount}&cu=INR`;
+            const upiLink = `upi://pay?pa=raijopinhero007@okhdfcbank&pn=trip budject money&am=${amount}&cu=INR`;
             window.location.href = upiLink;
         });
         payNowCell.appendChild(payNowButton);
