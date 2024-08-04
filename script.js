@@ -1,18 +1,18 @@
 document.addEventListener("DOMContentLoaded", function() {
     const participants = [
-        { name: 'Tinto', accommodation: 0, food: 0, transportation: 350, activities: 0, alcohol: 400, percentageChange: 10 },
-        { name: 'Ginto', accommodation: 0, food: 0, transportation: 350, activities: 0, alcohol: 400, percentageChange: 10 },
-        { name: 'Aby', accommodation: 0, food: 0, transportation: 350, activities: 0, alcohol: 400, percentageChange: 10 },
-        { name: 'Raijo', accommodation: 0, food: 0, transportation: 350, activities: 0, alcohol: 400, percentageChange: 10 },
-        { name: 'Vimal', accommodation: 0, food: 0, transportation: 350, activities: 0, alcohol: 400, percentageChange: 10 },
-        { name: 'Jerin', accommodation: 0, food: 0, transportation: 350, activities: 0, alcohol: 400, percentageChange: 10 },
-        { name: 'Jugal', accommodation: 0, food: 0, transportation: 350, activities: 0, alcohol: 400, percentageChange: 10 },
-        { name: 'Jesto', accommodation: 0, food: 0, transportation: 350, activities: 0, alcohol: 400, percentageChange: -10 },
-        { name: 'Tom', accommodation: 0, food: 0, transportation: 350, activities: 0, alcohol: 400, percentageChange: -10 },
-        { name: 'Alet', accommodation: 0, food: 0, transportation: 350, activities: 0, alcohol: 400, percentageChange: -10 },
-        { name: 'Ebin', accommodation: 0, food: 0, transportation: 350, activities: 0, alcohol: 400, percentageChange: -10 },
-        { name: 'Jefin', accommodation: 0, food: 0, transportation: 350, activities: 0, alcohol: 400, percentageChange: -10 },
-        { name: 'Melvin', accommodation: 0, food: 0, transportation: 350, activities: 0, alcohol: 400, percentageChange: -10 }
+        { name: 'Tinto', accommodation: 0, food: 700, transportation: 350, activities: 0, alcohol: 400, percentageChange: 10 },
+        { name: 'Ginto', accommodation: 0, food: 700, transportation: 350, activities: 0, alcohol: 400, percentageChange: 10 },
+        { name: 'Aby', accommodation: 0, food: 700, transportation: 350, activities: 0, alcohol: 400, percentageChange: 10 },
+        { name: 'Raijo', accommodation: 0, food: 700, transportation: 350, activities: 0, alcohol: 400, percentageChange: 10 },
+        { name: 'Vimal', accommodation: 0, food: 700, transportation: 350, activities: 0, alcohol: 400, percentageChange: 10 },
+        { name: 'Jerin', accommodation: 0, food: 700, transportation: 350, activities: 0, alcohol: 400, percentageChange: 10 },
+        { name: 'Jugal', accommodation: 0, food: 700, transportation: 350, activities: 0, alcohol: 400, percentageChange: 10 },
+        { name: 'Jesto', accommodation: 0, food: 700, transportation: 350, activities: 0, alcohol: 400, percentageChange: -10 },
+        { name: 'Tom', accommodation: 0, food: 700, transportation: 350, activities: 0, alcohol: 400, percentageChange: -10 },
+        { name: 'Alet', accommodation: 0, food: 700, transportation: 350, activities: 0, alcohol: 400, percentageChange: -10 },
+        { name: 'Ebin', accommodation: 0, food: 700, transportation: 350, activities: 0, alcohol: 400, percentageChange: -10 },
+        { name: 'Jefin', accommodation: 0, food: 700, transportation: 350, activities: 0, alcohol: 400, percentageChange: -10 },
+        { name: 'Melvin', accommodation: 0, food: 700, transportation: 350, activities: 0, alcohol: 400, percentageChange: -10 }
     ];
 
     const tableBody = document.getElementById('participants-table');
