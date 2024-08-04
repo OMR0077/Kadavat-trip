@@ -1,18 +1,18 @@
 document.addEventListener("DOMContentLoaded", function() {
     const participants = [
-        { name: 'Tinto', accommodation: 0, food: 700, transportation: 350, activities: 0, alcohol: 400, percentageChange: 10 },
-        { name: 'Ginto', accommodation: 0, food: 700, transportation: 350, activities: 0, alcohol: 400, percentageChange: 10 },
-        { name: 'Aby', accommodation: 0, food: 700, transportation: 350, activities: 0, alcohol: 400, percentageChange: 10 },
-        { name: 'Raijo', accommodation: 0, food: 700, transportation: 350, activities: 0, alcohol: 400, percentageChange: 10 },
-        { name: 'Vimal', accommodation: 0, food: 700, transportation: 350, activities: 0, alcohol: 400, percentageChange: 10 },
-        { name: 'Jerin', accommodation: 0, food: 700, transportation: 350, activities: 0, alcohol: 400, percentageChange: 10 },
-        { name: 'Jugal', accommodation: 0, food: 700, transportation: 350, activities: 0, alcohol: 400, percentageChange: 10 },
-        { name: 'Jesto', accommodation: 0, food: 700, transportation: 350, activities: 0, alcohol: 400, percentageChange: -10 },
-        { name: 'Tom', accommodation: 0, food: 700, transportation: 350, activities: 0, alcohol: 400, percentageChange: -10 },
-        { name: 'Alet', accommodation: 0, food: 700, transportation: 350, activities: 0, alcohol: 400, percentageChange: -10 },
-        { name: 'Ebin', accommodation: 0, food: 700, transportation: 350, activities: 0, alcohol: 400, percentageChange: -10 },
-        { name: 'Jefin', accommodation: 0, food: 700, transportation: 350, activities: 0, alcohol: 400, percentageChange: -10 },
-        { name: 'Melvin', accommodation: 0, food: 700, transportation: 350, activities: 0, alcohol: 400, percentageChange: -10 }
+        { name: 'Tinto', accommodation: 580, food: 350, transportation: 350, alcohol: 400, percentageChange: 0 },
+        { name: 'Ginto', accommodation: 580, food: 350, transportation: 350, alcohol: 400, percentageChange: 0 },
+        { name: 'Aby', accommodation: 580, food: 350, transportation: 350, alcohol: 400, percentageChange: 0 },
+        { name: 'Raijo', accommodation: 580, food: 350, transportation: 350, alcohol: 0, percentageChange: 0 },
+        { name: 'Vimal', accommodation: 580, food: 350, transportation: 350, alcohol: 400, percentageChange: 0 },
+        { name: 'Jerin', accommodation: 580, food: 350, transportation: 350, alcohol: 400, percentageChange: 0 },
+        { name: 'Jugal', accommodation: 580, food: 350, transportation: 350, alcohol: 400, percentageChange: 0 },
+        { name: 'Jesto', accommodation: 580, food: 350, transportation: 350, alcohol: 400, percentageChange: 0 },
+        { name: 'Tom', accommodation: 580, food: 350, transportation: 350, alcohol: 400, percentageChange: 0 },
+        { name: 'Alet', accommodation: 580, food: 350, transportation: 350, alcohol: 0, percentageChange: 0 },
+        { name: 'Ebin', accommodation: 580, food: 350, transportation: 350, alcohol: 400, percentageChange: 0 },
+        { name: 'Jefin', accommodation: 580, food: 350, transportation: 350, alcohol: 400, percentageChange: 0 },
+        { name: 'Melvin', accommodation: 580, food: 350, transportation: 350, alcohol: 400, percentageChange: 0 }
     ];
 
     const tableBody = document.getElementById('participants-table');
@@ -27,7 +27,6 @@ document.addEventListener("DOMContentLoaded", function() {
         const accommodationCell = createCheckboxCell(participant.accommodation, 'accommodation', index);
         const foodCell = createCheckboxCell(participant.food, 'food', index);
         const transportationCell = createCheckboxCell(participant.transportation, 'transportation', index);
-        const activitiesCell = createCheckboxCell(participant.activities, 'activities', index);
         const alcoholCell = createCheckboxCell(participant.alcohol, 'alcohol', index);
 
         const totalBudgetCell = document.createElement('td');
@@ -38,17 +37,28 @@ document.addEventListener("DOMContentLoaded", function() {
 
         const givenCell = document.createElement('td');
         givenCell.dataset.index = index;
-        updateGivenAmount(participant, givenCell);// Initialize the "Given" cell with $0
-   //     updateGivenAmount(participant);
+        updateGivenAmount(participant, givenCell);
+
+        // Create "Pay Now" button cell
+        const payNowCell = document.createElement('td');
+        const payNowButton = document.createElement('button');
+        payNowButton.textContent = "Pay Now";
+        payNowButton.addEventListener('click', () => {
+            const amount = calculateTotalBudget(participant).toFixed(2);
+            const upiLink = `upi://pay?pa=tintopinhero-1@okhdfcbank&pn=${participant.name}&am=${amount}&cu=INR`;
+            window.location.href = upiLink;
+        });
+        payNowCell.appendChild(payNowButton);
+
         row.appendChild(nameCell);
         row.appendChild(accommodationCell);
         row.appendChild(foodCell);
         row.appendChild(transportationCell);
-        row.appendChild(activitiesCell);
         row.appendChild(alcoholCell);
         row.appendChild(totalBudgetCell);
         row.appendChild(percentage);
         row.appendChild(givenCell);
+        row.appendChild(payNowCell);  // Append the "Pay Now" button cell
 
         tableBody.appendChild(row);
 
@@ -83,7 +93,6 @@ document.addEventListener("DOMContentLoaded", function() {
         checkbox.dataset.amount = amount;
         checkbox.dataset.type = type;
         checkbox.dataset.index = participantIndex;
-       // checkbox.addEventListener('change', updateGivenAmount);
 
         const icon = document.createElement('div');
         icon.classList.add('icon');
@@ -100,27 +109,19 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function calculateTotalBudget(participant) {
-        const amountFields = ['accommodation', 'food', 'transportation', 'activities', 'alcohol'];
+        const amountFields = ['accommodation', 'food', 'transportation', 'alcohol'];
         return amountFields.reduce((total, field) => {
             return total + (participant[field] > 0 ? participant[field] : 0);
         }, 0);
     }
 
     function updateGivenAmount(participants, givenCell) {
-    // Calculate the total budget amount
-    let totalBudget = calculateTotalBudget(participants);
-   console.log(totalBudget);
-    // Get the percentage change
-    let percentageChange = participants['percentageChange'];
-    console.log(percentageChange);
-    // Calculate the adjusted amount
-    let adjustedAmount = totalBudget + (totalBudget * percentageChange / 100);
-    console.log(adjustedAmount);
-    // Return the adjusted amount
-    givenCell.innerHTML = `<a href="upi://pay?pa=tintopinhero-1@okhdfcbank&pn=${participants.name}&am=${adjustedAmount.toFixed(2)}&cu=INR">$${adjustedAmount.toFixed(2)}</a>`;
+        let totalBudget = calculateTotalBudget(participants);
+        let percentageChange = participants['percentageChange'];
+        let adjustedAmount = totalBudget + (totalBudget * percentageChange / 100);
+        givenCell.innerHTML = `$${adjustedAmount.toFixed(2)}`;
     }
 
-    // Function to set specific checkboxes for a participant
     function setSpecificCheckboxesForParticipant(name, checkboxesToSet) {
         const rows = tableBody.querySelectorAll('tr');
         rows.forEach(row => {
@@ -130,13 +131,11 @@ document.addEventListener("DOMContentLoaded", function() {
                     const checkbox = row.querySelector(`.checkbox-container input[data-type="${type}"]`);
                     if (checkbox) {
                         checkbox.checked = true; // Check the specific checkboxes
-                        //checkbox.dispatchEvent(new Event('change')); // Trigger change event to update "Given" column
                     }
                 });
             }
         });
     }
 
-    // Example usage: Set specific checkboxes for "Jerin" (Transportation and Alcohol)
     setSpecificCheckboxesForParticipant('Jerin', ['transportation', 'alcohol']);
 });

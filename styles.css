@@ -291,5 +291,24 @@ th, td {
 .nav-list a:hover {
     text-decoration: underline;
 }
+button {
+    padding: 8px 16px;
+    background-color: #00796b;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button:hover {
+    background-color: #004d40;
+    transform: scale(1.05);
+}
+
+/* Optional: Add some animated shadow effect */
+button:active {
+    transform: scale(0.95);
+}
 
 
