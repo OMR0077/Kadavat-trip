@@ -133,7 +133,7 @@ th, td {
     position: relative;
     display: flex;
     align-items: center;
-    width: 100px; /* Default width */
+    width: 60px; /* Default width */
 }
 
 .checkbox-container input[type="checkbox"] {
@@ -181,7 +181,7 @@ th, td {
 
 @media (max-width: 768px) {
     .checkbox-container {
-        width: 60px; /* Adjust width for small screens */
+        width: 33px; /* Adjust width for small screens */
     }
 
     .checkbox-container .icon {
@@ -216,7 +216,7 @@ th, td {
     }
 
     .checkbox-container {
-        width: 50px; /* Further adjust width */
+        width: 34px; /* Further adjust width */
     }
 
     .checkbox-container .icon {

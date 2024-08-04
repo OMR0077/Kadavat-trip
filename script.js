@@ -1,18 +1,18 @@
 document.addEventListener("DOMContentLoaded", function() {
     const participants = [
-        { name: 'Tinto', accommodation: 580, food: 350, transportation: 350, alcohol: 400, percentageChange: 0 },
-        { name: 'Ginto', accommodation: 580, food: 350, transportation: 350, alcohol: 400, percentageChange: 0 },
-        { name: 'Aby', accommodation: 580, food: 350, transportation: 350, alcohol: 400, percentageChange: 0 },
-        { name: 'Raijo', accommodation: 580, food: 350, transportation: 350, alcohol: 0, percentageChange: 0 },
-        { name: 'Vimal', accommodation: 580, food: 350, transportation: 350, alcohol: 400, percentageChange: 0 },
-        { name: 'Jerin', accommodation: 580, food: 350, transportation: 350, alcohol: 400, percentageChange: 0 },
-        { name: 'Jugal', accommodation: 580, food: 350, transportation: 350, alcohol: 400, percentageChange: 0 },
-        { name: 'Jesto', accommodation: 580, food: 350, transportation: 350, alcohol: 400, percentageChange: 0 },
-        { name: 'Tom', accommodation: 580, food: 350, transportation: 350, alcohol: 400, percentageChange: 0 },
-        { name: 'Alet', accommodation: 580, food: 350, transportation: 350, alcohol: 0, percentageChange: 0 },
-        { name: 'Ebin', accommodation: 580, food: 350, transportation: 350, alcohol: 0, percentageChange: 0 },
-        { name: 'Jefin', accommodation: 580, food: 350, transportation: 350, alcohol: 400, percentageChange: 0 },
-        { name: 'Melvin', accommodation: 580, food: 350, transportation: 350, alcohol: 400, percentageChange: 0 }
+        { name: 'Tinto', occup: 'Worker', accommodation: 580,food: 350, transportation: 350, alcohol: 400, percentageChange: 0 },
+        { name: 'Ginto', occup: 'Worker', accommodation: 580,food: 350, transportation: 350, alcohol: 400, percentageChange: 0 },
+        { name: 'Aby',   occup: 'Worker', accommodation: 580,food: 350, transportation: 350, alcohol: 400, percentageChange: 0 },
+        { name: 'Raijo', occup: 'Worker', accommodation: 580,food: 350, transportation: 350, alcohol: 0, percentageChange: 0 },
+        { name: 'Vimal', occup: 'Worker', accommodation: 580,food: 350, transportation: 350, alcohol: 400, percentageChange: 0 },
+        { name: 'Jerin', occup: 'Worker', accommodation: 580,food: 350, transportation: 350, alcohol: 400, percentageChange: 0 },
+        { name: 'Jugal', occup: 'Worker', accommodation: 580,food: 350, transportation: 350, alcohol: 400, percentageChange: 0 },
+        { name: 'Jesto', occup: 'Student', accommodation: 580,food: 350, transportation: 350, alcohol: 400, percentageChange: 0 },
+        { name: 'Tom',   occup: 'Student', accommodation: 580,food: 350, transportation: 350, alcohol: 400, percentageChange: 0 },
+        { name: 'Alet',  occup: 'Student', accommodation: 580,food: 350, transportation: 350, alcohol: 0, percentageChange: 0 },
+        { name: 'Ebin',  occup: 'Student', accommodation: 580,food: 350, transportation: 350, alcohol: 0, percentageChange: 0 },
+        { name: 'Jefin', occup: 'Student', accommodation: 580,food: 350, transportation: 350, alcohol: 400, percentageChange: 0 },
+        { name: 'Melvin',occup: 'Student', accommodation: 580,food: 350, transportation: 350, alcohol: 400, percentageChange: 0 }
     ];
 
     const tableBody = document.getElementById('participants-table');
@@ -23,6 +23,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
         const nameCell = document.createElement('td');
         nameCell.textContent = participant.name;
+        const occupCell = document.createElement('td');
+        occupCell.textContent = participant.occup;
 
         const accommodationCell = createCheckboxCell(participant.accommodation, 'accommodation', index);
         const foodCell = createCheckboxCell(participant.food, 'food', index);
@@ -45,12 +47,13 @@ document.addEventListener("DOMContentLoaded", function() {
         payNowButton.textContent = "Pay Now";
         payNowButton.addEventListener('click', () => {
             const amount = calculateTotalBudget(participant).toFixed(2);
-            const upiLink = `upi://pay?pa=tintopinhero-1@okhdfcbank&pn=${participant.name}&am=${amount}&cu=INR`;
+            const upiLink = `upi://pay?pa=raijopinhero007@okhdfcbank&pn=${participant.name}&am=${amount}&cu=INR`;
             window.location.href = upiLink;
         });
         payNowCell.appendChild(payNowButton);
 
         row.appendChild(nameCell);
+        row.appendChild(occupCell);
         row.appendChild(accommodationCell);
         row.appendChild(foodCell);
         row.appendChild(transportationCell);
