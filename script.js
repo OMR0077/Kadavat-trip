@@ -1,18 +1,18 @@
 document.addEventListener("DOMContentLoaded", function() {
     const participants = [
-        { name: 'Tinto', accommodation: 0, food: 0, transportation: 275, activities: 0, alcohol: 400 },
-        { name: 'Ginto', accommodation: 0, food: 0, transportation: 332, activities: 0, alcohol: 400 },
-        { name: 'Aby', accommodation: 0, food: 0, transportation: 332, activities: 0, alcohol: 400 },
-        { name: 'Raijo', accommodation: 0, food: 0, transportation: 275, activities: 0, alcohol: 400 },
-        { name: 'Vimal', accommodation: 0, food: 0, transportation: 117, activities: 0, alcohol: 400 },
-        { name: 'Melvin', accommodation: 0, food: 0, transportation: 275, activities: 0, alcohol: 400 },
-        { name: 'Jugal', accommodation: 0, food: 0, transportation: 275, activities: 0, alcohol: 400 },
-        { name: 'Jesto', accommodation: 0, food: 0, transportation: 275, activities: 0, alcohol: 400 },
-        { name: 'Tom', accommodation: 0, food: 0, transportation: 275, activities: 0, alcohol: 400 },
-        { name: 'Alet', accommodation: 0, food: 0, transportation: 275, activities: 0, alcohol: 400 },
-        { name: 'Ebin', accommodation: 0, food: 0, transportation: 275, activities: 0, alcohol: 400 },
-        { name: 'Jefin', accommodation: 0, food: 0, transportation: 275, activities: 0, alcohol: 400 },
-        { name: 'Jerin', accommodation: 0, food: 0, transportation: 275, activities: 0, alcohol: 400 }
+        { name: 'Tinto', accommodation: 0, food: 0, transportation: 350, activities: 0, alcohol: 400, percentageChange: 10 },
+        { name: 'Ginto', accommodation: 0, food: 0, transportation: 350, activities: 0, alcohol: 400, percentageChange: 10 },
+        { name: 'Aby', accommodation: 0, food: 0, transportation: 350, activities: 0, alcohol: 400, percentageChange: 10 },
+        { name: 'Raijo', accommodation: 0, food: 0, transportation: 350, activities: 0, alcohol: 400, percentageChange: 10 },
+        { name: 'Vimal', accommodation: 0, food: 0, transportation: 350, activities: 0, alcohol: 400, percentageChange: 10 },
+        { name: 'Jerin', accommodation: 0, food: 0, transportation: 350, activities: 0, alcohol: 400, percentageChange: 10 },
+        { name: 'Jugal', accommodation: 0, food: 0, transportation: 350, activities: 0, alcohol: 400, percentageChange: 10 },
+        { name: 'Jesto', accommodation: 0, food: 0, transportation: 350, activities: 0, alcohol: 400, percentageChange: -10 },
+        { name: 'Tom', accommodation: 0, food: 0, transportation: 350, activities: 0, alcohol: 400, percentageChange: -10 },
+        { name: 'Alet', accommodation: 0, food: 0, transportation: 350, activities: 0, alcohol: 400, percentageChange: -10 },
+        { name: 'Ebin', accommodation: 0, food: 0, transportation: 350, activities: 0, alcohol: 400, percentageChange: -10 },
+        { name: 'Jefin', accommodation: 0, food: 0, transportation: 350, activities: 0, alcohol: 400, percentageChange: -10 },
+        { name: 'Melvin', accommodation: 0, food: 0, transportation: 350, activities: 0, alcohol: 400, percentageChange: -10 }
     ];
 
     const tableBody = document.getElementById('participants-table');
@@ -31,11 +31,15 @@ document.addEventListener("DOMContentLoaded", function() {
         const alcoholCell = createCheckboxCell(participant.alcohol, 'alcohol', index);
 
         const totalBudgetCell = document.createElement('td');
-        totalBudgetCell.textContent = `$${calculateTotalBudget(participant)}`;
+        totalBudgetCell.textContent = `$${calculateTotalBudget(participant).toFixed(2)}`;
+
+        const percentage = document.createElement('td');
+        percentage.textContent = participant['percentageChange'];
 
         const givenCell = document.createElement('td');
-        givenCell.textContent = '$0'; // Initialize the "Given" cell with $0
-
+        givenCell.dataset.index = index;
+        updateGivenAmount(participant, givenCell);// Initialize the "Given" cell with $0
+   //     updateGivenAmount(participant);
         row.appendChild(nameCell);
         row.appendChild(accommodationCell);
         row.appendChild(foodCell);
@@ -43,6 +47,7 @@ document.addEventListener("DOMContentLoaded", function() {
         row.appendChild(activitiesCell);
         row.appendChild(alcoholCell);
         row.appendChild(totalBudgetCell);
+        row.appendChild(percentage);
         row.appendChild(givenCell);
 
         tableBody.appendChild(row);
@@ -78,13 +83,13 @@ document.addEventListener("DOMContentLoaded", function() {
         checkbox.dataset.amount = amount;
         checkbox.dataset.type = type;
         checkbox.dataset.index = participantIndex;
-        checkbox.addEventListener('change', updateGivenAmount);
+       // checkbox.addEventListener('change', updateGivenAmount);
 
         const icon = document.createElement('div');
         icon.classList.add('icon');
 
         const span = document.createElement('span');
-        span.innerHTML = `<a href="upi://pay?pa=tintopinhero-1@okhdfcbank&pn=${participants[participantIndex].name}&am=${amount}&cu=INR">$${amount}</a>`;
+        span.innerHTML = `${amount}`;
 
         checkboxContainer.appendChild(checkbox);
         checkboxContainer.appendChild(icon);
@@ -101,19 +106,18 @@ document.addEventListener("DOMContentLoaded", function() {
         }, 0);
     }
 
-    function updateGivenAmount(event) {
-        const checkbox = event.target;
-        const row = checkbox.closest('tr');
-        const cells = row.querySelectorAll('td');
-        const amount = parseInt(checkbox.dataset.amount);
-        const givenCell = cells[7]; // Given cell is at index 7
-
-        let currentGivenAmount = parseInt(givenCell.textContent.replace('$', '')) || 0;
-        if (checkbox.checked) {
-            givenCell.textContent = `$${currentGivenAmount + amount}`;
-        } else {
-            givenCell.textContent = `$${Math.max(0, currentGivenAmount - amount)}`;
-        }
+    function updateGivenAmount(participants, givenCell) {
+    // Calculate the total budget amount
+    let totalBudget = calculateTotalBudget(participants);
+   console.log(totalBudget);
+    // Get the percentage change
+    let percentageChange = participants['percentageChange'];
+    console.log(percentageChange);
+    // Calculate the adjusted amount
+    let adjustedAmount = totalBudget + (totalBudget * percentageChange / 100);
+    console.log(adjustedAmount);
+    // Return the adjusted amount
+    givenCell.innerHTML = `<a href="upi://pay?pa=tintopinhero-1@okhdfcbank&pn=${participants.name}&am=${adjustedAmount.toFixed(2)}&cu=INR">$${adjustedAmount.toFixed(2)}</a>`;
     }
 
     // Function to set specific checkboxes for a participant
@@ -126,7 +130,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     const checkbox = row.querySelector(`.checkbox-container input[data-type="${type}"]`);
                     if (checkbox) {
                         checkbox.checked = true; // Check the specific checkboxes
-                        checkbox.dispatchEvent(new Event('change')); // Trigger change event to update "Given" column
+                        //checkbox.dispatchEvent(new Event('change')); // Trigger change event to update "Given" column
                     }
                 });
             }
