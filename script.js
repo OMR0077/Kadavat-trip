@@ -40,14 +40,14 @@ document.addEventListener("DOMContentLoaded", function() {
         percentage.classList.add('hidden-column');
 
         const givenCell = document.createElement('td');
-        givenCell.textContent = `$${updateGivenAmount(participant).toFixed(2)}`;
+        givenCell.textContent = `$${updateGivenAmount(participant).toFixed(0)}`;
 
         // Create "Pay Now" button cell
         const payNowCell = document.createElement('td');
         const payNowButton = document.createElement('button');
         payNowButton.textContent = "Pay Now";
         payNowButton.addEventListener('click', () => {
-            const amount = updateGivenAmount(participant).toFixed(2);
+            const amount = updateGivenAmount(participant).toFixed(0);
             const upiLink = `upi://pay?pa=raijopinhero007@okhdfcbank&pn=trip budject money&am=${amount}&cu=INR`;
             window.location.href = upiLink;
         });
@@ -126,7 +126,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function updateGivenAmount(participant) {
         let totalBudget = calculateTotalBudget(participant);
-        let percentageChange = parseFloat(participant['percentageChange']);
+        let percentageChange = parseInt(participant['percentageChange']);
         let adjustedAmount = 0;
 
         if (participant.occup === 'Worker') {
