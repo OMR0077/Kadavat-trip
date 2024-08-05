@@ -318,4 +318,6 @@ button:active {
     color: white; /* Ensure text color contrasts with the background */
     z-index: 1;
 }
-
+.hidden-column{
+    display: none;
+}

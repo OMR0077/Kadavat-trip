@@ -37,6 +37,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         const percentage = document.createElement('td');
         percentage.textContent = participant['percentageChange'];
+        percentage.classList.add('hidden-column');
 
         const givenCell = document.createElement('td');
         givenCell.dataset.index = index;
