@@ -1,18 +1,18 @@
 document.addEventListener("DOMContentLoaded", function() {
     const participants = [
-        { name: 'Tinto', occup: 'Worker', accommodation: 580,food: 350, transportation: 350, alcohol: 400, percentageChange: 0 },
-        { name: 'Ginto', occup: 'Worker', accommodation: 580,food: 350, transportation: 350, alcohol: 400, percentageChange: 0 },
-        { name: 'Aby',   occup: 'Worker', accommodation: 580,food: 350, transportation: 350, alcohol: 400, percentageChange: 0 },
-        { name: 'Raijo', occup: 'Worker', accommodation: 580,food: 350, transportation: 350, alcohol: 0, percentageChange: 0 },
-        { name: 'Vimal', occup: 'Worker', accommodation: 580,food: 350, transportation: 350, alcohol: 400, percentageChange: 0 },
-        { name: 'Jerin', occup: 'Worker', accommodation: 580,food: 350, transportation: 350, alcohol: 400, percentageChange: 0 },
-        { name: 'Jugal', occup: 'Worker', accommodation: 580,food: 350, transportation: 350, alcohol: 400, percentageChange: 0 },
-        { name: 'Jesto', occup: 'Student', accommodation: 580,food: 350, transportation: 350, alcohol: 400, percentageChange: 0 },
-        { name: 'Tom',   occup: 'Student', accommodation: 580,food: 350, transportation: 350, alcohol: 400, percentageChange: 0 },
-        { name: 'Alet',  occup: 'Student', accommodation: 580,food: 350, transportation: 350, alcohol: 0, percentageChange: 0 },
-        { name: 'Ebin',  occup: 'Student', accommodation: 580,food: 350, transportation: 350, alcohol: 0, percentageChange: 0 },
-        { name: 'Jefin', occup: 'Student', accommodation: 580,food: 350, transportation: 350, alcohol: 400, percentageChange: 0 },
-        { name: 'Melvin',occup: 'Student', accommodation: 580,food: 350, transportation: 350, alcohol: 400, percentageChange: 0 }
+        { name: 'Tinto', occup: 'Worker', accommodation: 580,food: 350, transportation: 350, alcohol: 400, percentageChange: 320 },
+        { name: 'Ginto', occup: 'Worker', accommodation: 580,food: 350, transportation: 350, alcohol: 400, percentageChange: 320 },
+        { name: 'Aby',   occup: 'Worker', accommodation: 580,food: 350, transportation: 350, alcohol: 400, percentageChange: 320 },
+        { name: 'Raijo', occup: 'Worker', accommodation: 580,food: 350, transportation: 350, alcohol: 0, percentageChange: 720 },
+        { name: 'Vimal', occup: 'Worker', accommodation: 580,food: 350, transportation: 350, alcohol: 400, percentageChange: 320 },
+        { name: 'Jerin', occup: 'Worker', accommodation: 580,food: 350, transportation: 350, alcohol: 400, percentageChange: 320 },
+        { name: 'Jugal', occup: 'Worker', accommodation: 580,food: 350, transportation: 350, alcohol: 400, percentageChange: 320 },
+        { name: 'Ebin', occup: 'Worker', accommodation: 580,food: 350, transportation: 350, alcohol: 400, percentageChange: 720 },
+        { name: 'Tom',   occup: 'Student', accommodation: 580,food: 350, transportation: 350, alcohol: 400, percentageChange: 672 },
+        { name: 'Alet',  occup: 'Student', accommodation: 580,food: 350, transportation: 350, alcohol: 0, percentageChange: 672 },
+        { name: 'Jesto',  occup: 'Student', accommodation: 580,food: 350, transportation: 350, alcohol: 0, percentageChange: 672 },
+        { name: 'Jefin', occup: 'Student', accommodation: 580,food: 350, transportation: 350, alcohol: 400, percentageChange: 672 },
+        { name: 'Melvin',occup: 'Student', accommodation: 580,food: 350, transportation: 350, alcohol: 400, percentageChange: 672 }
     ];
 
     const tableBody = document.getElementById('participants-table');
@@ -120,8 +120,16 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function updateGivenAmount(participants, givenCell) {
         let totalBudget = calculateTotalBudget(participants);
-        let percentageChange = participants['percentageChange'];
-        let adjustedAmount = totalBudget + (totalBudget * percentageChange / 100);
+        let percentageChange = parseFloat(participants['percentageChange']);
+        var occup = participants['occup'];
+        console.log(occup);
+        let adjustedAmount = 0;
+           if(occup == 'Worker'){
+             adjustedAmount = totalBudget + percentageChange;
+           }else{
+             adjustedAmount = totalBudget - percentageChange;
+           }
+           adjustedAmount = parseFloat(adjustedAmount);
         givenCell.innerHTML = `$${adjustedAmount.toFixed(2)}`;
     }
 
