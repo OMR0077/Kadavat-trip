@@ -53,7 +53,10 @@ document.addEventListener("DOMContentLoaded", function() {
         });
         payNowCell.appendChild(payNowButton);
 
-  
+        // Disable button if all checkboxes are checked
+       // checkDisablePayNowButton(row, payNowButton);
+
+
 
         row.appendChild(nameCell);
         row.appendChild(occupCell);
