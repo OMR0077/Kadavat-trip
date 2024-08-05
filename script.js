@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function() {
             }
 
             // Generate UPI link
-            const upiLink = generateUPILink('raijopinhero007@okhdfcbank', participant.name, amount);
+            const upiLink = generateUPILink('raijopinhero007@okhdfcbank', 'RAIJO ANTO PINHERO', amount);
             
             // Check URL length
             if (upiLink.length > 512) {
