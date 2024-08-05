@@ -42,25 +42,31 @@ document.addEventListener("DOMContentLoaded", function() {
         const givenCell = document.createElement('td');
         givenCell.textContent = `$${updateGivenAmount(participant).toFixed(0)}`;
 
-        // Create "Pay Now" button cell
         const payNowCell = document.createElement('td');
         const payNowButton = document.createElement('button');
         payNowButton.textContent = "Pay Now";
         payNowButton.addEventListener('click', () => {
             const amount = updateGivenAmount(participant).toFixed(0);
-            if (amount <= 10000) { // Check for a reasonable upper limit
-                const upiLink = `upi://pay?pa=raijopinhero007@okhdfcbank&pn=trip&am=${amount}&cu=INR`;
-                window.location.href = upiLink;
-            } else {
-                alert('Amount exceeds the limit. Please contact the administrator.');
+
+            // Check if the amount exceeds the UPI transaction limit
+            const upiTransactionLimit = 100000; // Example limit, can be adjusted
+            if (amount > upiTransactionLimit) {
+                alert('Amount exceeds the UPI transaction limit. Please contact the administrator.');
+                return;
             }
+
+            // Generate UPI link
+            const upiLink = generateUPILink('raijopinhero007@okhdfcbank', participant.name, amount);
+            
+            // Check URL length
+            if (upiLink.length > 512) {
+                alert('UPI link exceeds the maximum length. Please contact the administrator.');
+                return;
+            }
+
+            window.location.href = upiLink;
         });
         payNowCell.appendChild(payNowButton);
-
-        // Disable button if all checkboxes are checked
-       // checkDisablePayNowButton(row, payNowButton);
-
-
 
         row.appendChild(nameCell);
         row.appendChild(occupCell);
@@ -71,7 +77,7 @@ document.addEventListener("DOMContentLoaded", function() {
         row.appendChild(totalBudgetCell);
         row.appendChild(percentage);
         row.appendChild(givenCell);
-        row.appendChild(payNowCell);  // Append the "Pay Now" button cell
+        row.appendChild(payNowCell);
 
         tableBody.appendChild(row);
 
@@ -102,7 +108,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
-        checkbox.checked = false;  // Unchecked by default
+        checkbox.checked = false;
         checkbox.dataset.amount = amount;
         checkbox.dataset.type = type;
         checkbox.dataset.index = participantIndex;
@@ -141,16 +147,9 @@ document.addEventListener("DOMContentLoaded", function() {
         return parseInt(adjustedAmount);
     }
 
-    function checkDisablePayNowButton(row, button) {
-        const checkboxes = row.querySelectorAll('input[type="checkbox"]');
-        const allChecked = Array.from(checkboxes).every(checkbox => checkbox.checked);
-        if (allChecked) {
-            button.textContent = 'Done';
-            button.disabled = true;
-        } else {
-            button.textContent = 'Pay Now';
-            button.disabled = false;
-        }
+    function generateUPILink(upiId, payeeName, amount, currency = 'INR') {
+        const formattedName = encodeURIComponent(payeeName.trim().replace(/\s+/g, '+'));
+        return `upi://pay?pa=${upiId}&pn=${formattedName}&am=${amount}&cu=${currency}`;
     }
 
     function setSpecificCheckboxesForParticipant(name, checkboxesToSet) {
@@ -161,8 +160,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 checkboxesToSet.forEach(type => {
                     const checkbox = row.querySelector(`.checkbox-container input[data-type="${type}"]`);
                     if (checkbox) {
-                        checkbox.checked = true; // Check the specific checkboxes
-                        checkbox.dispatchEvent(new Event('change')); // Trigger the change event
+                        checkbox.checked = true;
+                        checkbox.dispatchEvent(new Event('change'));
                     }
                 });
             }
