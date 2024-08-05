@@ -7,10 +7,10 @@ document.addEventListener("DOMContentLoaded", function() {
         { name: 'Vimal', occup: 'Worker', accommodation: 580,food: 350, transportation: 350, alcohol: 400, percentageChange: 320 },
         { name: 'Jerin', occup: 'Worker', accommodation: 580,food: 350, transportation: 350, alcohol: 400, percentageChange: 320 },
         { name: 'Jugal', occup: 'Worker', accommodation: 580,food: 350, transportation: 350, alcohol: 400, percentageChange: 320 },
-        { name: 'Ebin', occup: 'Worker', accommodation: 580,food: 350, transportation: 350, alcohol: 400, percentageChange: 720 },
+        { name: 'Ebin', occup: 'Worker', accommodation: 580,food: 350, transportation: 350, alcohol: 0, percentageChange: 720 },
         { name: 'Tom',   occup: 'Student', accommodation: 580,food: 350, transportation: 350, alcohol: 400, percentageChange: 672 },
         { name: 'Alet',  occup: 'Student', accommodation: 580,food: 350, transportation: 350, alcohol: 0, percentageChange: 672 },
-        { name: 'Jesto',  occup: 'Student', accommodation: 580,food: 350, transportation: 350, alcohol: 0, percentageChange: 672 },
+        { name: 'Jesto',  occup: 'Student', accommodation: 580,food: 350, transportation: 350, alcohol: 400, percentageChange: 672 },
         { name: 'Jefin', occup: 'Student', accommodation: 580,food: 350, transportation: 350, alcohol: 400, percentageChange: 672 },
         { name: 'Melvin',occup: 'Student', accommodation: 580,food: 350, transportation: 350, alcohol: 400, percentageChange: 672 }
     ];
