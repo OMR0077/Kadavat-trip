@@ -134,7 +134,7 @@ document.addEventListener("DOMContentLoaded", function() {
         } else {
             adjustedAmount = totalBudget - percentageChange;
         }
-        return adjustedAmount;
+        return parseInt(adjustedAmount);
     }
 
     function checkDisablePayNowButton(row, button) {
