@@ -48,8 +48,12 @@ document.addEventListener("DOMContentLoaded", function() {
         payNowButton.textContent = "Pay Now";
         payNowButton.addEventListener('click', () => {
             const amount = updateGivenAmount(participant).toFixed(0);
-            const upiLink = `upi://pay?pa=raijopinhero007@okhdfcbank&pn=trip budject money&am=${amount}&cu=INR`;
-            window.location.href = upiLink;
+            if (amount <= 10000) { // Check for a reasonable upper limit
+                const upiLink = `upi://pay?pa=raijopinhero007@okhdfcbank&pn=trip&am=${amount}&cu=INR`;
+                window.location.href = upiLink;
+            } else {
+                alert('Amount exceeds the limit. Please contact the administrator.');
+            }
         });
         payNowCell.appendChild(payNowButton);
 
