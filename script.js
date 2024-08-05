@@ -130,7 +130,7 @@ document.addEventListener("DOMContentLoaded", function() {
              adjustedAmount = totalBudget - percentageChange;
            }
            adjustedAmount = parseFloat(adjustedAmount);
-        givenCell.innerHTML = `$${adjustedAmount.toFixed(2)}`;
+        givenCell.innerHTML = `$${adjustedAmount}`;
     }
 
     function setSpecificCheckboxesForParticipant(name, checkboxesToSet) {
