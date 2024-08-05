@@ -23,6 +23,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         const nameCell = document.createElement('td');
         nameCell.textContent = participant.name;
+        nameCell.classList.add('fixed-column');
         const occupCell = document.createElement('td');
         occupCell.textContent = participant.occup;
 
@@ -46,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const payNowButton = document.createElement('button');
         payNowButton.textContent = "Pay Now";
         payNowButton.addEventListener('click', () => {
-            const amount = calculateTotalBudget(participant).toFixed(2);
+            const amount = calculateTotalBudget(participant);
             const upiLink = `upi://pay?pa=raijopinhero007@okhdfcbank&pn=trip budject money&am=${amount}&cu=INR`;
             window.location.href = upiLink;
         });

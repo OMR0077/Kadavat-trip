@@ -310,5 +310,12 @@ button:hover {
 button:active {
     transform: scale(0.95);
 }
-
+.fixed-column{
+    position: -webkit-sticky; /* For Safari */
+    position: sticky;
+    left: 0;
+    background-color: #00796b; /* Same as header background */
+    color: white; /* Ensure text color contrasts with the background */
+    z-index: 1;
+}
 
