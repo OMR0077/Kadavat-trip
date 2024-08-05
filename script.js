@@ -142,7 +142,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const checkboxes = row.querySelectorAll('input[type="checkbox"]');
         const allChecked = Array.from(checkboxes).every(checkbox => checkbox.checked);
         button.disabled = allChecked;
-        button.textContent = allChecked ? 'Done' : 'Pay Now';
+        //button.textContent = allChecked ? 'Done' : 'Pay Now';
     }
 
     function setSpecificCheckboxesForParticipant(name, checkboxesToSet) {
@@ -159,5 +159,7 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         });
     }
+
+
     setSpecificCheckboxesForParticipant('Jefin', ['transportation', 'alcohol','accommodation','food']);
 });
