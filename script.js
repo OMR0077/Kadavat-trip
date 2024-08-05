@@ -46,18 +46,14 @@ document.addEventListener("DOMContentLoaded", function() {
         const payNowCell = document.createElement('td');
         const payNowButton = document.createElement('button');
         payNowButton.textContent = "Pay Now";
+        payNowButton.addEventListener('click', () => {
+            const amount = updateGivenAmount(participant).toFixed(2);
+            const upiLink = `upi://pay?pa=raijopinhero007@okhdfcbank&pn=trip budject money&am=${amount}&cu=INR`;
+            window.location.href = upiLink;
+        });
         payNowCell.appendChild(payNowButton);
 
-        // Disable button if all checkboxes are checked
-        checkDisablePayNowButton(row, payNowButton);
-
-        // Add event listeners to checkboxes to handle enabling/disabling of Pay Now button
-        const checkboxes = [accommodationCell, foodCell, transportationCell, alcoholCell].map(cell => cell.querySelector('input[type="checkbox"]'));
-        checkboxes.forEach(checkbox => {
-            checkbox.addEventListener('change', () => {
-                checkDisablePayNowButton(row, payNowButton);
-            });
-        });
+  
 
         row.appendChild(nameCell);
         row.appendChild(occupCell);
@@ -141,8 +137,13 @@ document.addEventListener("DOMContentLoaded", function() {
     function checkDisablePayNowButton(row, button) {
         const checkboxes = row.querySelectorAll('input[type="checkbox"]');
         const allChecked = Array.from(checkboxes).every(checkbox => checkbox.checked);
-        button.disabled = allChecked;
-        //button.textContent = allChecked ? 'Done' : 'Pay Now';
+        if (allChecked) {
+            button.textContent = 'Done';
+            button.disabled = true;
+        } else {
+            button.textContent = 'Pay Now';
+            button.disabled = false;
+        }
     }
 
     function setSpecificCheckboxesForParticipant(name, checkboxesToSet) {
@@ -154,6 +155,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     const checkbox = row.querySelector(`.checkbox-container input[data-type="${type}"]`);
                     if (checkbox) {
                         checkbox.checked = true; // Check the specific checkboxes
+                        checkbox.dispatchEvent(new Event('change')); // Trigger the change event
                     }
                 });
             }
