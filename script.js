@@ -166,5 +166,10 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
 
-    setSpecificCheckboxesForParticipant('Jefin', ['transportation', 'alcohol','accommodation','food']);
+   
+        setSpecificCheckboxesForParticipant( 'Jefin', ['transportation', 'alcohol','accommodation','food']);
+        setSpecificCheckboxesForParticipant(  'Tinto', ['transportation', 'alcohol','accommodation','food']);
+        setSpecificCheckboxesForParticipant( 'Alet', ['transportation', 'alcohol','accommodation','food']);
+
+     
 });
