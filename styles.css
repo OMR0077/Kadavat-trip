@@ -321,3 +321,9 @@ button:active {
 .hidden-column{
     display: none;
 }
+.highlight-cell {
+    font-weight: bold;
+    background-color: #f0f8ff; /* Light blue background */
+    color: #000; /* Black text color */
+    border: 1px solid #ccc; /* Light grey border */
+}

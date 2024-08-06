@@ -41,6 +41,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         const givenCell = document.createElement('td');
         givenCell.textContent = `$${updateGivenAmount(participant).toFixed(0)}`;
+        givenCell.classList.add('highlight-cell');
 
         const payNowCell = document.createElement('td');
         const payNowButton = document.createElement('button');
