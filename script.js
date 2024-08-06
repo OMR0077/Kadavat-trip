@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const payNowButton = document.createElement('button');
         payNowButton.textContent = "Pay Now";
         payNowButton.addEventListener('click', () => {
-            const amount = updateGivenAmount(participant).toFixed(0);
+            const amount = prompt("Enter the amount to pay:", updateGivenAmount(participant).toFixed(0));
 
             // Check if the amount exceeds the UPI transaction limit
             const upiTransactionLimit = 100000; // Example limit, can be adjusted
@@ -168,11 +168,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-
-   
-        setSpecificCheckboxesForParticipant( 'Jefin', ['transportation', 'alcohol','accommodation','food']);
-        setSpecificCheckboxesForParticipant(  'Tinto', ['transportation', 'alcohol','accommodation','food']);
-        setSpecificCheckboxesForParticipant( 'Alet', ['transportation', 'alcohol','accommodation','food']);
-
-     
+    setSpecificCheckboxesForParticipant('Jefin', ['transportation', 'alcohol', 'accommodation', 'food']);
+    setSpecificCheckboxesForParticipant('Tinto', ['transportation', 'alcohol', 'accommodation', 'food']);
+    setSpecificCheckboxesForParticipant('Alet', ['transportation', 'alcohol', 'accommodation', 'food']);
 });
