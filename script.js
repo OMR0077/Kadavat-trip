@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const payNowButton = document.createElement('button');
         payNowButton.textContent = "Pay Now";
         payNowButton.addEventListener('click', () => {
-            const amount = prompt("Enter the amount to pay:", updateGivenAmount(participant).toFixed(0));
+            const amount = prompt("This is your amount pay to raijo:", updateGivenAmount(participant).toFixed(0));
 
             // Check if the amount exceeds the UPI transaction limit
             const upiTransactionLimit = 100000; // Example limit, can be adjusted
@@ -149,7 +149,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function generateUPILink(upiId, payeeName, amount, currency = 'INR') {
         const formattedName = encodeURIComponent(payeeName.trim().replace(/\s+/g, '+'));
-        return `upi://pay?pa=${upiId}&pn=${formattedName}&am=${amount}&cu=${currency}`;
+      //  return `upi://pay?pa=${upiId}&pn=${formattedName}&am=${amount}&cu=${currency}`;
     }
 
     function setSpecificCheckboxesForParticipant(name, checkboxesToSet) {
