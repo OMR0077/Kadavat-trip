@@ -96,7 +96,6 @@ document.addEventListener("DOMContentLoaded", function() {
     totalNameCell.textContent = 'Total';
     totalNameCell.classList.add('fixed-column');
 
-
     const emptyCells = new Array(5).fill(null).map(() => document.createElement('td'));
     emptyCells.forEach(cell => totalRow.appendChild(cell));
 
@@ -140,7 +139,7 @@ document.addEventListener("DOMContentLoaded", function() {
     function createCheckboxCell(amount, type, participantIndex) {
         const cell = document.createElement('td');
         const checkboxContainer = document.createElement('div');
-        checkboxContainer.classList.add('checkbox-container');
+        checkboxContainer.classList.add('checkbox-container', 'unchecked');
 
         const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
@@ -148,6 +147,16 @@ document.addEventListener("DOMContentLoaded", function() {
         checkbox.dataset.amount = amount;
         checkbox.dataset.type = type;
         checkbox.dataset.index = participantIndex;
+
+        checkbox.addEventListener('change', function() {
+            if (checkbox.checked) {
+                checkboxContainer.classList.add('checked');
+                checkboxContainer.classList.remove('unchecked');
+            } else {
+                checkboxContainer.classList.remove('checked');
+                checkboxContainer.classList.add('unchecked');
+            }
+        });
 
         const icon = document.createElement('div');
         icon.classList.add('icon');
@@ -185,7 +194,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function generateUPILink(upiId, payeeName, amount, currency = 'INR') {
         const formattedName = encodeURIComponent(payeeName.trim().replace(/\s+/g, '+'));
-       // return `upi://pay?pa=${upiId}&pn=${formattedName}&am=${amount}&cu=${currency}`;
+        return `upi://pay?pa=${upiId}&pn=${formattedName}&am=${amount}&cu=${currency}`;
     }
 
     function setSpecificCheckboxesForParticipant(name, checkboxesToSet) {

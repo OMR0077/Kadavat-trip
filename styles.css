@@ -332,3 +332,11 @@ button:active {
     background-color: #ffeb3b; /* Change this to your desired color */
     font-weight: bold; /* Optionally, make the text bold */
 }
+/* Add these to styles.css */
+.checkbox-container.checked {
+    background-color: rgb(62, 207, 62); /* Color for checked state */
+}
+
+.checkbox-container.unchecked {
+    background-color: rgb(226, 41, 41); /* Color for unchecked state */
+}
