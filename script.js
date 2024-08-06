@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Calculate total values and append the total row
     const totalRow = document.createElement('tr');
     totalRow.classList.add('total-row'); // Add this line
-    
+
     const totalNameCell = document.createElement('td');
     totalNameCell.textContent = 'Total';
     totalNameCell.classList.add('fixed-column');
@@ -207,4 +207,5 @@ document.addEventListener("DOMContentLoaded", function() {
     setSpecificCheckboxesForParticipant('Jefin', ['transportation', 'alcohol', 'accommodation', 'food']);
     setSpecificCheckboxesForParticipant('Tinto', ['transportation', 'alcohol', 'accommodation', 'food']);
     setSpecificCheckboxesForParticipant('Alet', ['transportation', 'alcohol', 'accommodation', 'food']);
+    setSpecificCheckboxesForParticipant('Jerin', ['transportation', 'alcohol', 'accommodation', 'food']);
 });
