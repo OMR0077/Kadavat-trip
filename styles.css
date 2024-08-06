@@ -327,3 +327,8 @@ button:active {
     color: #000; /* Black text color */
     border: 1px solid #ccc; /* Light grey border */
 }
+/* Add this to styles.css */
+.total-row {
+    background-color: #ffeb3b; /* Change this to your desired color */
+    font-weight: bold; /* Optionally, make the text bold */
+}

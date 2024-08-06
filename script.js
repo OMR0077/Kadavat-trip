@@ -88,6 +88,41 @@ document.addEventListener("DOMContentLoaded", function() {
         participantFilter.appendChild(option);
     });
 
+    // Calculate total values and append the total row
+    const totalRow = document.createElement('tr');
+    totalRow.classList.add('total-row'); // Add this line
+    
+    const totalNameCell = document.createElement('td');
+    totalNameCell.textContent = 'Total';
+    totalNameCell.classList.add('fixed-column');
+
+
+    const emptyCells = new Array(5).fill(null).map(() => document.createElement('td'));
+    emptyCells.forEach(cell => totalRow.appendChild(cell));
+
+    const totalBudgetValue = participants.reduce((total, participant) => total + calculateTotalBudget(participant), 0);
+    const totalBudgetCell = document.createElement('td');
+    totalBudgetCell.textContent = `$${totalBudgetValue.toFixed(2)}`;
+
+    const totalPercentageCell = document.createElement('td');
+    totalPercentageCell.classList.add('hidden-column');
+
+    const totalGivenValue = participants.reduce((total, participant) => total + updateGivenAmount(participant), 0);
+    const totalGivenCell = document.createElement('td');
+    totalGivenCell.textContent = `$${totalGivenValue.toFixed(0)}`;
+    totalGivenCell.classList.add('highlight-cell');
+
+    const emptyPayNowCell = document.createElement('td');
+
+    totalRow.appendChild(totalNameCell);
+    emptyCells.forEach(cell => totalRow.appendChild(cell));
+    totalRow.appendChild(totalBudgetCell);
+    totalRow.appendChild(totalPercentageCell);
+    totalRow.appendChild(totalGivenCell);
+    totalRow.appendChild(emptyPayNowCell);
+
+    tableBody.appendChild(totalRow);
+
     participantFilter.addEventListener('change', function() {
         const selectedName = this.value;
         const rows = tableBody.querySelectorAll('tr');
@@ -150,7 +185,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function generateUPILink(upiId, payeeName, amount, currency = 'INR') {
         const formattedName = encodeURIComponent(payeeName.trim().replace(/\s+/g, '+'));
-      //  return `upi://pay?pa=${upiId}&pn=${formattedName}&am=${amount}&cu=${currency}`;
+       // return `upi://pay?pa=${upiId}&pn=${formattedName}&am=${amount}&cu=${currency}`;
     }
 
     function setSpecificCheckboxesForParticipant(name, checkboxesToSet) {
