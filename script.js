@@ -194,7 +194,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function generateUPILink(upiId, payeeName, amount, currency = 'INR') {
         const formattedName = encodeURIComponent(payeeName.trim().replace(/\s+/g, '+'));
-        return `upi://pay?pa=${upiId}&pn=${formattedName}&am=${amount}&cu=${currency}`;
+       // return `upi://pay?pa=${upiId}&pn=${formattedName}&am=${amount}&cu=${currency}`;
     }
 
     function setSpecificCheckboxesForParticipant(name, checkboxesToSet) {
