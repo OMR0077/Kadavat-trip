@@ -7,11 +7,20 @@
     <link rel="stylesheet" href="ledger.css">
 </head>
 <body>
-    <h1>Fund Flow Ledger</h1>
-    <select id="participant-select">
-        <option value="all">All Participants</option>
-    </select>
-    <div id="ledger-container"></div>
+    <header>
+        <h1>Fund Flow Ledger</h1>
+    </header>
+    <main>
+        <div class="container">
+            <div class="participant-select-wrapper">
+                <label for="participant-select">Select Participant:</label>
+                <select id="participant-select">
+                    <option value="all">All Participants</option>
+                </select>
+            </div>
+            <div id="ledger-container"></div>
+        </div>
+    </main>
     <script src="ledger.js"></script>
 </body>
 </html>

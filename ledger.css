@@ -1,52 +1,153 @@
 /* General styling */
 body {
-    font-family: Arial, sans-serif;
-    padding: 20px;
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #4a90e2;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
-    text-align: center;
+    margin: 0;
+    font-size: 2em;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.participant-select-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+label {
+    margin-right: 10px;
+    font-weight: bold;
 }
 
 #participant-select {
-    display: block;
-    margin: 0 auto 20px auto;
-    padding: 5px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+#ledger-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* Flow chart styling */
 .flow-chart {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 40px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+    width: 80%;
+    transition: opacity 0.5s ease-in-out;
 }
 
 .participant {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    width: 100%;
+    background-color: #fff;
+}
+
+.category, .subcategory {
+    margin-top: 10px;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    width: 80%;
-}
-
-.category {
-    margin-top: 10px;
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
     width: 90%;
+    background-color: #f0f0f0;
 }
 
 .subcategory {
-    margin-top: 5px;
-    padding: 3px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    width: 95%;
+    margin-left: 20px;
 }
 
 .amount {
     font-weight: bold;
     color: #333;
+    margin-top: 10px;
+}
+
+.flow-chart .amount {
+    background-color: #e7f7ff;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    .flow-chart {
+        width: 100%;
+    }
+
+    .category, .subcategory {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .subcategory {
+        margin-left: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 15px 0;
+    }
+
+    h1 {
+        font-size: 1.5em;
+    }
+
+    .participant-select-wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    label {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    #participant-select {
+        width: 100%;
+    }
+
+    .category, .subcategory {
+        padding: 8px;
+    }
+
+    .subcategory {
+        margin-left: 15px;
+    }
 }

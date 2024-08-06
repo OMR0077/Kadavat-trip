@@ -1,18 +1,18 @@
 document.addEventListener("DOMContentLoaded", function() {
     const participants = [
-        { name: 'Tinto', occup: 'Worker', accommodation: 580, food: 350, transportation: 350, alcohol: 400, percentageChange: 320, morningFood: 200, eveningFood: 150, train: 200, road: 150 },
-        { name: 'Ginto', occup: 'Worker', accommodation: 580, food: 350, transportation: 350, alcohol: 400, percentageChange: 320, morningFood: 200, eveningFood: 150, train: 200, road: 150 },
-        { name: 'Aby', occup: 'Worker', accommodation: 580, food: 350, transportation: 350, alcohol: 400, percentageChange: 320, morningFood: 200, eveningFood: 150, train: 200, road: 150 },
-        { name: 'Raijo', occup: 'Worker', accommodation: 580, food: 350, transportation: 350, alcohol: 0, percentageChange: 720, morningFood: 200, eveningFood: 150, train: 200, road: 150 },
-        { name: 'Vimal', occup: 'Worker', accommodation: 580, food: 350, transportation: 350, alcohol: 400, percentageChange: 320, morningFood: 200, eveningFood: 150, train: 200, road: 150 },
-        { name: 'Jerin', occup: 'Worker', accommodation: 580, food: 350, transportation: 350, alcohol: 400, percentageChange: 320, morningFood: 200, eveningFood: 150, train: 200, road: 150 },
-        { name: 'Jugal', occup: 'Worker', accommodation: 580, food: 350, transportation: 350, alcohol: 400, percentageChange: 320, morningFood: 200, eveningFood: 150, train: 200, road: 150 },
-        { name: 'Ebin', occup: 'Worker', accommodation: 580, food: 350, transportation: 350, alcohol: 0, percentageChange: 720, morningFood: 200, eveningFood: 150, train: 200, road: 150 },
-        { name: 'Tom', occup: 'Student', accommodation: 580, food: 350, transportation: 350, alcohol: 400, percentageChange: 672, morningFood: 200, eveningFood: 150, train: 200, road: 150 },
-        { name: 'Alet', occup: 'Student', accommodation: 580, food: 350, transportation: 350, alcohol: 0, percentageChange: 672, morningFood: 200, eveningFood: 150, train: 200, road: 150 },
-        { name: 'Jesto', occup: 'Student', accommodation: 580, food: 350, transportation: 350, alcohol: 400, percentageChange: 672, morningFood: 200, eveningFood: 150, train: 200, road: 150 },
-        { name: 'Jefin', occup: 'Student', accommodation: 580, food: 350, transportation: 350, alcohol: 400, percentageChange: 672, morningFood: 200, eveningFood: 150, train: 200, road: 150 },
-        { name: 'Melvin', occup: 'Student', accommodation: 580, food: 350, transportation: 350, alcohol: 400, percentageChange: 672, morningFood: 200, eveningFood: 150, train: 200, road: 150 }
+        { name: 'Tinto', occup: 'Worker', accommodation: 580, food: 350, transportation: 350, alcohol: 400, percentageChange: 320, morningFood: 200, eveningFood: 150, train:  276, road: 74 },
+        { name: 'Ginto', occup: 'Worker', accommodation: 580, food: 350, transportation: 350, alcohol: 400, percentageChange: 320, morningFood: 200, eveningFood: 150, train:  332, road: 18 },
+        { name: 'Aby', occup: 'Worker', accommodation: 580, food: 350, transportation: 350, alcohol: 400, percentageChange: 320, morningFood: 200, eveningFood: 150, train:  332, road: 18 },
+        { name: 'Raijo', occup: 'Worker', accommodation: 580, food: 350, transportation: 350, alcohol: 0, percentageChange: 720, morningFood: 200, eveningFood: 150, train:  276, road: 74 },
+        { name: 'Vimal', occup: 'Worker', accommodation: 580, food: 350, transportation: 350, alcohol: 400, percentageChange: 320, morningFood: 200, eveningFood: 150, train:  276, road: 74 },
+        { name: 'Jerin', occup: 'Worker', accommodation: 580, food: 350, transportation: 350, alcohol: 400, percentageChange: 320, morningFood: 200, eveningFood: 150, train:  276, road: 74 },
+        { name: 'Jugal', occup: 'Worker', accommodation: 580, food: 350, transportation: 350, alcohol: 400, percentageChange: 320, morningFood: 200, eveningFood: 150, train:  276, road: 74 },
+        { name: 'Ebin', occup: 'Worker', accommodation: 580, food: 350, transportation: 350, alcohol: 0, percentageChange: 720, morningFood: 200, eveningFood: 150, train:  276, road: 74 },
+        { name: 'Tom', occup: 'Student', accommodation: 580, food: 350, transportation: 350, alcohol: 400, percentageChange: 672, morningFood: 200, eveningFood: 150, train:  276, road: 74 },
+        { name: 'Alet', occup: 'Student', accommodation: 580, food: 350, transportation: 350, alcohol: 0, percentageChange: 672, morningFood: 200, eveningFood: 150, train:  276, road: 74 },
+        { name: 'Jesto', occup: 'Student', accommodation: 580, food: 350, transportation: 350, alcohol: 400, percentageChange: 672, morningFood: 200, eveningFood: 150, train:  276, road: 74 },
+        { name: 'Jefin', occup: 'Student', accommodation: 580, food: 350, transportation: 350, alcohol: 400, percentageChange: 672, morningFood: 200, eveningFood: 150, train:  276, road: 74 },
+        { name: 'Melvin', occup: 'Student', accommodation: 580, food: 350, transportation: 350, alcohol: 400, percentageChange: 672, morningFood: 200, eveningFood: 150, train:  276, road: 74 }
     ];
 
     const ledgerContainer = document.getElementById('ledger-container');
@@ -35,8 +35,13 @@ document.addEventListener("DOMContentLoaded", function() {
         flowCharts.forEach(flowChart => {
             if (selectedName === 'all' || flowChart.dataset.name === selectedName) {
                 flowChart.style.display = 'flex';
+                flowChart.style.opacity = '1';
+                flowChart.style.transition = 'opacity 0.5s ease-in-out';
             } else {
-                flowChart.style.display = 'none';
+                flowChart.style.opacity = '0';
+                setTimeout(() => {
+                    flowChart.style.display = 'none';
+                }, 500);
             }
         });
     });
@@ -53,10 +58,10 @@ document.addEventListener("DOMContentLoaded", function() {
         const accommodationDiv = createCategoryDiv('Accommodation', participant.accommodation);
         const foodDiv = createCategoryDiv('Food', participant.food);
         const transportationDiv = createCategoryDiv('Transportation', participant.transportation);
-        const alcoholDiv = createCategoryDiv('Alcohol', participant.alcohol);
+        const alcoholDiv = createCategoryDiv('Drinks', participant.alcohol);
 
-        const morningFoodDiv = createSubCategoryDiv('Morning Food', participant.morningFood);
-        const eveningFoodDiv = createSubCategoryDiv('Evening Food', participant.eveningFood);
+        const morningFoodDiv = createSubCategoryDiv('17th Night Food', participant.morningFood);
+        const eveningFoodDiv = createSubCategoryDiv('18th Evening Food', participant.eveningFood);
         foodDiv.appendChild(morningFoodDiv);
         foodDiv.appendChild(eveningFoodDiv);
 
@@ -105,7 +110,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const percentageChangeDiv = document.createElement('div');
         percentageChangeDiv.classList.add('amount');
         const changeType = participant.occup === 'Worker' ? 'added' : 'subtracted';
-        percentageChangeDiv.innerHTML = `<strong>  Percentage Change</strong>: ${participant.percentageChange} (to be <strong>${changeType}</strong>)`;
+        percentageChangeDiv.innerHTML = `<strong>Percentage Change</strong>: ${participant.percentageChange} (to be <strong>${changeType}</strong>)`;
         return percentageChangeDiv;
     }
 
