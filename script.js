@@ -1,18 +1,18 @@
 document.addEventListener("DOMContentLoaded", function() {
     const participants = [
         { name: 'Tinto', occup: 'Worker', accommodation: 580, food: 350, transportation: 350, alcohol: 400, percentageChange: 320 },
-        { name: 'Ginto', occup: 'Worker', accommodation: 580, food: 350, transportation: 350, alcohol: 400, percentageChange: 320 },
-        { name: 'Aby', occup: 'Worker', accommodation: 580, food: 350, transportation: 350, alcohol: 400, percentageChange: 320 },
         { name: 'Raijo', occup: 'Worker', accommodation: 580, food: 350, transportation: 350, alcohol: 0, percentageChange: 720 },
-        { name: 'Vimal', occup: 'Worker', accommodation: 580, food: 350, transportation: 350, alcohol: 400, percentageChange: 320 },
         { name: 'Jerin', occup: 'Worker', accommodation: 580, food: 350, transportation: 350, alcohol: 400, percentageChange: 320 },
-        { name: 'Jugal', occup: 'Worker', accommodation: 580, food: 350, transportation: 350, alcohol: 400, percentageChange: 320 },
         { name: 'Ebin', occup: 'Worker', accommodation: 580, food: 350, transportation: 350, alcohol: 0, percentageChange: 720 },
         { name: 'Tom', occup: 'Student', accommodation: 580, food: 350, transportation: 350, alcohol: 400, percentageChange: 672 },
         { name: 'Alet', occup: 'Student', accommodation: 580, food: 350, transportation: 350, alcohol: 0, percentageChange: 672 },
         { name: 'Jesto', occup: 'Student', accommodation: 580, food: 350, transportation: 350, alcohol: 400, percentageChange: 672 },
         { name: 'Jefin', occup: 'Student', accommodation: 580, food: 350, transportation: 350, alcohol: 400, percentageChange: 672 },
-        { name: 'Melvin', occup: 'Student', accommodation: 580, food: 350, transportation: 350, alcohol: 400, percentageChange: 672 }
+        { name: 'Melvin', occup: 'Student', accommodation: 580, food: 350, transportation: 350, alcohol: 400, percentageChange: 672 },
+        { name: 'Vimal', occup: 'Worker', accommodation: 580, food: 350, transportation: 350, alcohol: 400, percentageChange: 320 },
+        { name: 'Ginto', occup: 'Worker', accommodation: 580, food: 350, transportation: 350, alcohol: 400, percentageChange: 320 },
+        { name: 'Aby', occup: 'Worker', accommodation: 580, food: 350, transportation: 350, alcohol: 400, percentageChange: 320 },
+        { name: 'Jugal', occup: 'Worker', accommodation: 580, food: 350, transportation: 350, alcohol: 400, percentageChange: 320 }
     ];
 
     const tableBody = document.getElementById('participants-table');
@@ -218,4 +218,7 @@ document.addEventListener("DOMContentLoaded", function() {
     setSpecificCheckboxesForParticipant('Alet', ['transportation', 'alcohol', 'accommodation', 'food']);
     setSpecificCheckboxesForParticipant('Jerin', ['transportation', 'alcohol', 'accommodation', 'food']);
     setSpecificCheckboxesForParticipant('Jesto', ['transportation', 'alcohol', 'accommodation', 'food']);
+    setSpecificCheckboxesForParticipant('Tom', ['transportation', 'alcohol', 'accommodation', 'food']);
+    setSpecificCheckboxesForParticipant('Ebin', ['transportation', 'alcohol', 'accommodation', 'food']);
+    setSpecificCheckboxesForParticipant('Raijo', ['transportation', 'alcohol', 'accommodation', 'food']);
 });
