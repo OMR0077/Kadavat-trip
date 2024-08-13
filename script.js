@@ -220,5 +220,9 @@ document.addEventListener("DOMContentLoaded", function() {
     setSpecificCheckboxesForParticipant('Jesto', ['transportation', 'alcohol', 'accommodation', 'food']);
     setSpecificCheckboxesForParticipant('Tom', ['transportation', 'alcohol', 'accommodation', 'food']);
     setSpecificCheckboxesForParticipant('Ebin', ['transportation', 'alcohol', 'accommodation', 'food']);
+    setSpecificCheckboxesForParticipant('Melvin', ['transportation', 'alcohol', 'accommodation', 'food']);
+    setSpecificCheckboxesForParticipant('Ginto', ['transportation', 'alcohol', 'accommodation', 'food']);
+    setSpecificCheckboxesForParticipant('Aby', ['transportation', 'alcohol', 'accommodation', 'food']);
+    setSpecificCheckboxesForParticipant('Vimal', ['transportation', 'alcohol', 'accommodation', 'food']);
     setSpecificCheckboxesForParticipant('Raijo', ['transportation', 'alcohol', 'accommodation', 'food']);
 });
