@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Train Tickets</title>
     <style>
-        body {
+body {
     font-family: Arial, sans-serif;
     background-color: #e0f7fa;
     margin: 0;
@@ -21,6 +21,8 @@ header {
 
 .container {
     padding: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
 }
 
 .filter-container {
@@ -28,6 +30,7 @@ header {
     display: flex;
     align-items: center;
     gap: 1rem;
+    flex-wrap: wrap;
 }
 
 label {
@@ -46,6 +49,7 @@ select {
     padding: 2rem;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow-x: auto; /* Enable horizontal scrolling on small screens */
 }
 
 table {
@@ -77,6 +81,41 @@ button {
 button:hover {
     background-color: #004d40;
     transform: scale(1.05);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .filter-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    select {
+        width: 100%;
+    }
+
+    table {
+        font-size: 14px;
+    }
+
+    th, td {
+        padding: 8px;
+    }
+}
+
+@media (max-width: 576px) {
+    table {
+        font-size: 12px;
+    }
+
+    th, td {
+        padding: 6px;
+    }
+
+    header h1 {
+        font-size: 1.5rem;
+    }
 }
 
     </style>
