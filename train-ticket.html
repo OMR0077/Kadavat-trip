@@ -4,144 +4,180 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Train Tickets</title>
-    <!-- Add Font Awesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrQdX9BLUG2yZf+br1tnf4wZ49Hl2e5lo43H/42L0B7xqbg4R3U4uzY6tZ2M+myL5If5KOVMx1qqGZby7w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
-        }
-        header {
-            background-color: #007bff;
-            color: white;
-            padding: 1rem 0;
-            text-align: center;
-            position: relative;
-        }
-        header .home-link {
-            position: absolute;
-            left: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: white;
-            text-decoration: none;
-            font-size: 24px;
-        }
-        header .home-link i {
-            margin-right: 8px;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        .filter-container {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .ticket-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-        .ticket {
-            background: white;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s;
-            position: relative;
-        }
-        .ticket:hover {
-            transform: translateY(-5px);
-        }
-        .ticket embed, .ticket img {
-            display: block;
-            width: 100%;
-            height: auto;
-        }
-        .ticket .download-link {
-            display: block;
-            text-align: center;
-            padding: 10px;
-            background: #007bff;
-            color: white;
-            text-decoration: none;
-            border-bottom-left-radius: 8px;
-            border-bottom-right-radius: 8px;
-        }
-        .ticket .download-link:hover {
-            background: #0056b3;
-        }
-        select {
-            padding: 10px;
-            font-size: 16px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-        }
+    font-family: Arial, sans-serif;
+    background-color: #e0f7fa;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #00796b;
+    color: white;
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.container {
+    padding: 2rem;
+}
+
+.filter-container {
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+label {
+    font-weight: bold;
+}
+
+select {
+    padding: 0.5rem;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    width: 250px;
+}
+
+.table-container {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 1rem;
+    text-align: left;
+}
+
+th {
+    background-color: #00796b;
+    color: white;
+}
+
+button {
+    padding: 8px 16px;
+    background-color: #00796b;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button:hover {
+    background-color: #004d40;
+    transform: scale(1.05);
+}
+
     </style>
 </head>
 <body>
     <header>
-        <a href="index.html" class="home-link"><i class="fas fa-home"></i> Home</a>
         <h1>Train Tickets</h1>
     </header>
     <div class="container">
+        <!-- Filter Section -->
         <div class="filter-container">
-            <label for="route-filter">Choose a route:</label>
+            <label for="route-filter">Select Route:</label>
             <select id="route-filter" onchange="filterTickets()">
                 <option value="all">All</option>
-                <option value="Thrissur to Varkala">Thrissur to Varkala</option>
-                <option value="Varkala to Thrissur">Varkala to Thrissur</option>
+                <option value="thrissur-varkala">Thrissur to Varkala</option>
+                <option value="varkala-thrissur">Varkala to Thrissur</option>
             </select>
         </div>
-        <div class="ticket-container" id="ticket-container">
-            <!-- Tickets will be inserted here by JavaScript -->
+
+        <!-- Table Section -->
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Passenger Name</th>
+                        <th>PNR Number</th>
+                        <th>Train Time</th>
+                        <th>Train No</th>
+                        <th>Route</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="ticket-table-body">
+                    <!-- Example Row -->
+                    <tr data-route="thrissur-varkala">
+                        <td>GINTO <br> ABY</td>
+                        <td>2645224160</td>
+                        <td>3:30 pm</td>
+                        <td>12626</td>
+                        <td>Thrissur to Varkala</td>
+                        <td><button onclick="downloadTicket('media/Ticket_2645224160.pdf')">Download Ticket</button></td>
+                    </tr>
+                    <tr data-route="thrissur-varkala">
+                        <td>JERIN <br> GINTO -> (ALET)<br> ABY -> (EBIN)<br> JUGAL<br> RAIJO <br> VIMAL</td>
+                        <td>4402618730</td>
+                        <td>5:40 am</td>
+                        <td>16526</td>
+                        <td>Thrissur to Varkala</td>
+                        <td><button onclick="downloadTicket('media/Ticket_4402618730.pdf')">Download Ticket</button></td>
+                    </tr>
+                    <tr data-route="thrissur-varkala">
+                        <td>JESTO <br>TINTO<br>JEFIN<br>TOM</td>
+                        <td>4822588393</td>
+                        <td>5:40 am</td>
+                        <td>16526</td>
+                        <td>Thrissur to Varkala</td>
+                        <td><button onclick="downloadTicket('media/Ticket_4822588393.pdf')">Download Ticket</button></td>
+                    </tr>
+                    <tr data-route="varkala-thrissur">
+                        <td>JEFIN <br>ALET<br>EBIN<br>TOM</td>
+                        <td>4617534135</td>
+                        <td>6:00 PM</td>
+                        <td>16342</td>
+                        <td>Varkala to Thrissur</td>
+                        <td><button onclick="downloadTicket('media/Ticket_4617534135.pdf')">Download Ticket</button></td>
+                    </tr>
+                    <tr data-route="varkala-thrissur">
+                        <td>ABY <br>RAIJO<br>VIMAL<br>JUGAL<br>GINTO<br>JESTO</td>
+                        <td>4824771670</td>
+                        <td>6:00 PM</td>
+                        <td>16342</td>
+                        <td>Varkala to Thrissur</td>
+                        <td><button onclick="downloadTicket('media/Ticket_2645224160.pdf')">Download Ticket</button></td>
+                    </tr>
+                    <!-- Add more rows as needed -->
+                </tbody>
+            </table>
         </div>
     </div>
 
     <script>
-        // Array of ticket objects with route information
-        const tickets = [
-            { url: 'media/Ticket_2645224160.pdf', route: 'Thrissur to Varkala' },
-            { url: 'media/Ticket_4402618730.pdf', route: 'Thrissur to Varkala' },
-            { url: 'media/Ticket_4617534135.pdf', route: 'Thrissur to Varkala' },
-            { url: 'media/Ticket_4822588393.pdf', route: 'Varkala to Thrissur' },
-            { url: 'media/Ticket_4824771670.pdf', route: 'Varkala to Thrissur' },
-            // Add more tickets with their respective routes
-        ];
+        function downloadTicket(url) {
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'ticket.pdf';
+            a.click();
+        }
 
-        // Function to load tickets into the HTML based on filter
-        function loadTickets(route = 'all') {
-            const container = document.getElementById('ticket-container');
-            container.innerHTML = ''; // Clear existing tickets
+        function filterTickets() {
+            const filterValue = document.getElementById('route-filter').value;
+            const rows = document.querySelectorAll('#ticket-table-body tr');
 
-            tickets.forEach((ticket, index) => {
-                if (route === 'all' || ticket.route === route) {
-                    const ticketDiv = document.createElement('div');
-                    ticketDiv.classList.add('ticket');
-                    ticketDiv.innerHTML = `
-                        <embed src="${ticket.url}" type="application/pdf" onerror="this.style.display='none'; document.getElementById('img${index}').style.display='block';">
-                        <img id="img${index}" src="${ticket.url.replace('.pdf', '.jpg')}" alt="Ticket ${index + 1}" style="display:none;">
-                        <a class="download-link" href="${ticket.url}" download="ticket${index + 1}.pdf">Download PDF</a>
-                    `;
-                    container.appendChild(ticketDiv);
+            rows.forEach(row => {
+                const route = row.getAttribute('data-route');
+                if (filterValue === 'all' || route === filterValue) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
                 }
             });
         }
-
-        // Function to filter tickets based on the selected route
-        function filterTickets() {
-            const route = document.getElementById('route-filter').value;
-            loadTickets(route);
-        }
-
-        // Load all tickets when the page loads
-        window.onload = () => loadTickets();
     </script>
 </body>
 </html>
