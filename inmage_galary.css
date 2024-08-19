@@ -19,7 +19,6 @@ h1 {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: 20px; /* Adjust this value for the gap between images */
-    padding: 20px;
 }
 
 .gallery-item {
