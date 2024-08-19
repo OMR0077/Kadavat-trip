@@ -18,7 +18,7 @@ h1 {
 .gallery {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 15px;
+    gap: 20px; /* Adjust this value for the gap between images */
     padding: 20px;
 }
 
@@ -27,11 +27,14 @@ h1 {
     overflow: hidden;
     border-radius: 8px;
     cursor: pointer;
+    width: 200px; /* Set a fixed width */
+    height: 200px; /* Set a fixed height */
 }
 
 .gallery-item img {
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: cover; /* Ensures the image covers the container while maintaining aspect ratio */
     transition: transform 0.3s ease;
 }
 
@@ -90,7 +93,7 @@ h1 {
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .gallery {
-        gap: 10px;
+        gap: 15px; /* Adjust the gap for smaller screens */
     }
 
     .close {
@@ -102,11 +105,16 @@ h1 {
 @media (max-width: 480px) {
     .gallery {
         grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-        gap: 8px;
+        gap: 10px; /* Adjust the gap for even smaller screens */
     }
 
     .lightbox-content {
         max-width: 90%;
         max-height: 90%;
+    }
+
+    .gallery-item {
+        width: 150px; /* Adjust for smaller screens */
+        height: 150px;
     }
 }
