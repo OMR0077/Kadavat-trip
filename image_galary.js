@@ -1,5 +1,6 @@
+const imageDirectory  = 'tripimages/';
 // Define an array with image filenames
-const images = [
+const imageFilenames = [
     '1.jpeg',
     '2.jpeg',
     '3.jpeg',
@@ -85,19 +86,18 @@ const images = [
 ];
 
 // Path to the images folder
-const imageFolderPath = 'tripimages/';
 
-// Get the gallery element
+
 const gallery = document.getElementById('gallery');
 
 // Dynamically create and append images to the gallery
-images.forEach(image => {
+imageFilenames.forEach(filename => {
     const galleryItem = document.createElement('div');
     galleryItem.classList.add('gallery-item');
 
     const imgElement = document.createElement('img');
-    imgElement.src = imageFolderPath + image;
-    imgElement.alt = 'Gallery Image';
+    imgElement.src = imageDirectory + filename;
+    imgElement.alt = filename;
 
     galleryItem.appendChild(imgElement);
     gallery.appendChild(galleryItem);
@@ -106,24 +106,24 @@ images.forEach(image => {
 // Lightbox functionality
 const lightbox = document.getElementById('lightbox');
 const lightboxImg = document.getElementById('lightbox-img');
+const downloadBtn = document.getElementById('download-btn');
 const close = document.querySelector('.close');
 
-// Open the lightbox when clicking an image
 document.querySelectorAll('.gallery-item img').forEach(image => {
     image.addEventListener('click', () => {
         lightbox.style.display = 'block';
         lightboxImg.src = image.src;
+        downloadBtn.href = image.src; // Set the download link
+        downloadBtn.download = image.alt; // Set the download filename
     });
 });
 
-// Close the lightbox
 close.addEventListener('click', () => {
     lightbox.style.display = 'none';
 });
 
-// Close the lightbox when clicking outside the image
 lightbox.addEventListener('click', (e) => {
-    if (e.target !== lightboxImg) {
+    if (e.target !== lightboxImg && e.target !== downloadBtn) {
         lightbox.style.display = 'none';
     }
 });
