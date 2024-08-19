@@ -7,8 +7,24 @@
     <link rel="stylesheet" href="inmage_galary.css">
 </head>
 <body>
-    <h1>Image Gallery with Download Option</h1>
-    <div class="gallery" id="gallery"></div>
+    <h1>Media Gallery</h1>
+    
+    <!-- Navigation Tabs -->
+    <div class="tab">
+        <button class="tablinks" onclick="openTab(event, 'Photos')" id="defaultOpen">Photos</button>
+        <button class="tablinks" onclick="openTab(event, 'Videos')">Videos</button>
+        <a href="index.html" class="home-link">Home</a>
+    </div>
+
+    <!-- Photo Gallery Tab -->
+    <div id="Photos" class="tabcontent">
+        <div class="gallery" id="gallery"></div>
+    </div>
+
+    <!-- Video Gallery Tab -->
+    <div id="Videos" class="tabcontent">
+        <div class="video-gallery" id="video-gallery"></div>
+    </div>
 
     <!-- Lightbox -->
     <div id="lightbox" class="lightbox">
@@ -16,6 +32,12 @@
         <img class="lightbox-content" id="lightbox-img">
         <a id="download-btn" class="download-btn" download>Download</a>
     </div>
+    <!-- New Lightbox for Videos -->
+<div id="video-lightbox" class="lightbox">
+    <span class="close-video">&times;</span>
+    <video class="lightbox-content" id="lightbox-video" controls></video>
+    <a id="download-video-btn" class="download-btn" download>Download</a>
+</div>
 
     <script src="image_galary.js"></script>
 </body>

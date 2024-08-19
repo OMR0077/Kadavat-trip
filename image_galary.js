@@ -1,4 +1,5 @@
 const imageDirectory  = 'tripimages/';
+const videoDirectory  = 'tripvideos/'; 
 // Define an array with image filenames
 const imageFilenames = [
     '1.jpeg',
@@ -139,10 +140,21 @@ const imageFilenames = [
     // Add all your image filenames here
 ];
 
-// Path to the images folder
-
+const videoFilenames = [ 
+    '1.mp4',
+    '2.mp4',
+    '3.mp4',
+    '4.mp4',
+    '5.mp4',
+    '7.mp4',
+    '8.mp4',
+    '9.mp4',
+    '10.mp4'  
+    // Add your video filenames here
+];
 
 const gallery = document.getElementById('gallery');
+const videoGallery = document.getElementById('video-gallery');
 
 // Dynamically create and append images to the gallery
 imageFilenames.forEach(filename => {
@@ -157,18 +169,35 @@ imageFilenames.forEach(filename => {
     gallery.appendChild(galleryItem);
 });
 
+// Dynamically create and append videos to the video gallery
+videoFilenames.forEach(filename => {
+    const videoItem = document.createElement('div');
+    videoItem.classList.add('gallery-item');
+
+    const videoElement = document.createElement('video');
+    videoElement.src = videoDirectory + filename;
+    videoElement.controls = true;
+
+    videoItem.appendChild(videoElement);
+    videoGallery.appendChild(videoItem);
+});
+
 // Lightbox functionality
 const lightbox = document.getElementById('lightbox');
 const lightboxImg = document.getElementById('lightbox-img');
 const downloadBtn = document.getElementById('download-btn');
 const close = document.querySelector('.close');
 
+function openLightbox(imageSrc, altText) {
+    lightbox.style.display = 'block';
+    lightboxImg.src = imageSrc;
+    downloadBtn.href = imageSrc;
+    downloadBtn.download = altText;
+}
+
 document.querySelectorAll('.gallery-item img').forEach(image => {
     image.addEventListener('click', () => {
-        lightbox.style.display = 'block';
-        lightboxImg.src = image.src;
-        downloadBtn.href = image.src; // Set the download link
-        downloadBtn.download = image.alt; // Set the download filename
+        openLightbox(image.src, image.alt);
     });
 });
 
@@ -179,5 +208,54 @@ close.addEventListener('click', () => {
 lightbox.addEventListener('click', (e) => {
     if (e.target !== lightboxImg && e.target !== downloadBtn) {
         lightbox.style.display = 'none';
+    }
+});
+
+// Tab functionality
+function openTab(evt, tabName) {
+    const tabcontent = document.getElementsByClassName("tabcontent");
+    for (let i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    const tablinks = document.getElementsByClassName("tablinks");
+    for (let i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(tabName).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+
+// Open default tab
+document.getElementById("defaultOpen").click();
+
+
+const videoLightbox = document.getElementById('video-lightbox');
+const lightboxVideo = document.getElementById('lightbox-video');
+const downloadVideoBtn = document.getElementById('download-video-btn');
+const closeVideo = document.querySelector('.close-video');
+
+function openVideoLightbox(videoSrc, altText) {
+    videoLightbox.style.display = 'block';
+    lightboxVideo.src = videoSrc;
+    downloadVideoBtn.href = videoSrc;
+    downloadVideoBtn.download = altText;
+    lightboxVideo.play();  // Automatically start playing the video
+}
+
+document.querySelectorAll('.gallery-item video').forEach(video => {
+    video.addEventListener('click', () => {
+        openVideoLightbox(video.src, video.alt);
+    });
+});
+
+closeVideo.addEventListener('click', () => {
+    videoLightbox.style.display = 'none';
+    lightboxVideo.pause();  // Pause the video when closing the lightbox
+});
+
+videoLightbox.addEventListener('click', (e) => {
+    if (e.target !== lightboxVideo && e.target !== downloadVideoBtn) {
+        videoLightbox.style.display = 'none';
+        lightboxVideo.pause();
     }
 });
