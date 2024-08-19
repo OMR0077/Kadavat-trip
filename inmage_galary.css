@@ -104,7 +104,7 @@ h1 {
 @media (max-width: 480px) {
     .gallery {
         grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-        gap: 10px; /* Adjust the gap for even smaller screens */
+        gap: 26px; /* Adjust the gap for even smaller screens */
     }
 
     .lightbox-content {
